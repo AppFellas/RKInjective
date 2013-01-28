@@ -7,8 +7,10 @@
 //
 
 #import <objc/runtime.h>
+#import <RestKit/CoreData.h>
 #import "RKInjectiveStubObject.h"
 #import "NSString+Inflections.h"
+
 
 @implementation RKInjectiveStubObject
 
@@ -45,8 +47,24 @@
 }
 
 + (RKObjectMapping *)objectMapping {
-    RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[self class]];
+    Class cls = [self class];
+    
+    // CoreData
+    if ([cls isSubclassOfClass:[NSManagedObject class]]) {
+        RKManagedObjectStore *store = [RKManagedObjectStore defaultStore];
+        RKEntityMapping *mapping = [RKEntityMapping mappingForEntityForName:[self modelName] inManagedObjectStore:store];
+        if (!mapping.identificationAttributes) {
+            mapping.identificationAttributes = @[[self uniqueIdentifierName]];
+        }
+        if (!mapping.attributeMappings) {
+            [mapping addAttributeMappingsFromDictionary:[self objectMappingDictionary]];
+        }
+        return mapping;
+    }
+    
+    RKObjectMapping *mapping = [RKObjectMapping mappingForClass:cls];
     [mapping addAttributeMappingsFromDictionary:[self objectMappingDictionary]];
+    
     return mapping;
 }
 
