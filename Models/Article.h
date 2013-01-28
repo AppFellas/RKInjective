@@ -12,5 +12,6 @@
 
 @property (nonatomic, strong) NSString *articleId;
 @property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *title;
 
 @end

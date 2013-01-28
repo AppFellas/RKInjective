@@ -5,6 +5,7 @@ PODS:
 - Inflections (1.0.0):
   - RegexKitLite
 - Injective (0.2.2)
+- Nocilla (0.1)
 - RegexKitLite (4.0)
 - RestKit (0.20.0pre6):
   - RestKit/Core (= 0.20.0pre6)
@@ -20,26 +21,39 @@ PODS:
   - SOCKit
 - RestKit/ObjectMapping (0.20.0pre6)
 - RestKit/Support (0.20.0pre6)
+- RestKit/Testing (0.20.0pre6)
 - SOCKit (1.1)
 
 DEPENDENCIES:
 - Expecta
 - Inflections
 - Injective
-- RestKit
+- Nocilla (from `https://github.com/luisobo/Nocilla/raw/master/Nocilla.podspec')
+- RestKit (from `https://github.com/RestKit/RestKit/raw/development/RestKit.podspec')
+- RestKit/Testing (from `https://github.com/RestKit/RestKit/raw/development/RestKit.podspec')
+
+EXTERNAL SOURCES:
+  Nocilla:
+    :podspec: https://github.com/luisobo/Nocilla/raw/master/Nocilla.podspec
+  RestKit:
+    :podspec: https://github.com/RestKit/RestKit/raw/development/RestKit.podspec
+  RestKit/Testing:
+    :podspec: https://github.com/RestKit/RestKit/raw/development/RestKit.podspec
 
 SPEC CHECKSUMS:
   AFNetworking: 761a418233d280c1e0580bcb76ff9cb4c3073d17
   Expecta: d46fb1bd78c90a83da0158b9b1e108de106e369f
   Inflections: e77c455409381402163911a75835892fd406ff99
   Injective: a8f4359fdd252b9b3323f2f7341534ba49e1b631
+  Nocilla: 17ce66cbd1b6e2a335c1e13d8d4220d34d5995fa
   RegexKitLite: 293ff6f3cf8f34277989a37802162c6961a2b35a
-  RestKit: ccca19640fcc3031f82ad4250c44061e2e2ddce7
-  RestKit/Core: ccca19640fcc3031f82ad4250c44061e2e2ddce7
-  RestKit/CoreData: ccca19640fcc3031f82ad4250c44061e2e2ddce7
-  RestKit/Network: ccca19640fcc3031f82ad4250c44061e2e2ddce7
-  RestKit/ObjectMapping: ccca19640fcc3031f82ad4250c44061e2e2ddce7
-  RestKit/Support: ccca19640fcc3031f82ad4250c44061e2e2ddce7
+  RestKit: 8f62889f7a186c2fd11e93413150906f6aef91d6
+  RestKit/Core: 8f62889f7a186c2fd11e93413150906f6aef91d6
+  RestKit/CoreData: 8f62889f7a186c2fd11e93413150906f6aef91d6
+  RestKit/Network: 8f62889f7a186c2fd11e93413150906f6aef91d6
+  RestKit/ObjectMapping: 8f62889f7a186c2fd11e93413150906f6aef91d6
+  RestKit/Support: 8f62889f7a186c2fd11e93413150906f6aef91d6
+  RestKit/Testing: 8f62889f7a186c2fd11e93413150906f6aef91d6
   SOCKit: 179515c1a621dd5652a60e9be02ea4adcd25bc9b
 
 COCOAPODS: 0.16.1
