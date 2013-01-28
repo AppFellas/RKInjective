@@ -51,13 +51,27 @@
 }
 
 - (id)uniqueIdentifier {
-    return @"stub";
+    NSString *_uniqueIdentifier = [[[self class] modelName] stringByAppendingString:@"Id"];
+    SEL _getUniqueIdentifier = NSSelectorFromString(_uniqueIdentifier);
+    if ([self respondsToSelector:_getUniqueIdentifier]) {
+        id _uniqueIdentifier = [self performSelector:_getUniqueIdentifier];
+        return _uniqueIdentifier;
+    }
+    return nil;
 }
 
 + (void)getObjectsOnSuccess:(RKIObjectsSuccessBlock)success failure:(RKIFailureBlock)failure {
     NSString *routeName = [self modelNamePlural];
     [[RKObjectManager sharedManager] getObjectsAtPathForRouteNamed:routeName object:nil parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         success([mappingResult array]);
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        failure(error);
+    }];
+}
+
+- (void)getObjectOnSuccess:(RKIObjectSuccessBlock)success failure:(RKIFailureBlock)failure {
+    [[RKObjectManager sharedManager] getObject:self path:nil parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        success([mappingResult firstObject]);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         failure(error);
     }];
