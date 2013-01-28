@@ -3,7 +3,11 @@
 
 ## Installation
 
-* TODO: cocoapods
+* Using `cocoapods`
+
+``` objc
+pod 'RKInjective', :podspec => 'https://raw.github.com/AppFellas/RKInjective/master/RKInjective.podspec'
+```
 
 ## Usage
 * Check Tests
