@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Sergii Kliuiev. All rights reserved.
 //
 
-#import <RestKit.h>
+#import <RestKit/RestKit.h>
 
 typedef void ( ^RKIObjectsSuccessBlock ) ( NSArray *objects );
 typedef void ( ^RKIObjectSuccessBlock ) ( id object );

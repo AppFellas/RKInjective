@@ -11,6 +11,9 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 
 #import "RKInjective.h"
+#import <RestKit/Testing.h>
 
 #define EXP_SHORTHAND
 #import "Expecta.h"
+
+#import "Nocilla.h"
