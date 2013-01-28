@@ -24,7 +24,7 @@ typedef void ( ^RKIFailureBlock ) (  NSError *error );
 + (NSDictionary *)objectMappingDictionary;
 - (id)uniqueIdentifier;
 + (void)getObjectsOnSuccess:(RKIObjectsSuccessBlock)success failure:(RKIFailureBlock)failure;
-- (void)getObjectOnSuccess:(RKIObjectsSuccessBlock)success failure:(RKIFailureBlock)failure;
+- (void)getObjectOnSuccess:(RKIObjectSuccessBlock)success failure:(RKIFailureBlock)failure;
 @end
 
 #define rkinjective_register(cls) \

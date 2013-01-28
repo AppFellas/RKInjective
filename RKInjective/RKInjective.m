@@ -19,9 +19,16 @@
     
     NSString *path = [cls modelNamePlural];
     RKRoute *getObjectsRoute = [RKRoute routeWithName:[cls modelNamePlural]
-                                pathPattern:path
-                                     method:RKRequestMethodGET];
+                                          pathPattern:path
+                                               method:RKRequestMethodGET];
     [router.routeSet addRoute:getObjectsRoute];
+    
+    NSString *modelId = [[cls modelName] stringByAppendingString:@"Id"];
+    NSString *pattern = [[cls modelNamePlural] stringByAppendingFormat:@"/:%@", modelId];
+    RKRoute *getObjectRoute = [RKRoute routeWithClass:cls
+                                          pathPattern:pattern
+                                               method:RKRequestMethodGET];
+    [router.routeSet addRoute:getObjectRoute];
     
     
     RKObjectMapping *mapping = [cls objectMapping];
