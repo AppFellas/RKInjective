@@ -48,7 +48,8 @@
 
 - (void)testUniqueIdentifier {
     Article *article = [Article new];
-    expect([article uniqueIdentifier]).to.equal(@"stub");
+    article.articleId = @"1000";
+    expect([article uniqueIdentifier]).to.equal(@"1000");
 }
 
 - (void)testMapping {
@@ -84,6 +85,30 @@
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
                                  beforeDate:[NSDate dateWithTimeIntervalSinceNow:10]];
 //    dispatch_release(semaphore);
+}
+
+- (void)testGetObject {
+    NSString *data = [RKTestFixture stringWithContentsOfFixture:@"article.json"];
+    stubRequest(@"GET", @"http://localhost/articles/10000").andReturn(200).
+    withHeaders(@{@"Content-Type": @"application/json"}).withBody(data);
+    
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    
+    Article *article = [Article new];
+    article.articleId = @"10000";
+    [article getObjectOnSuccess:^(id object) {
+        STAssertNotNil(object, @"Could not load objects");
+        expect(object).toNot.beNil();
+        dispatch_semaphore_signal(semaphore);
+    } failure:^(NSError *error) {
+        STAssertNil(error, @"Should be no error on object loading");
+        dispatch_semaphore_signal(semaphore);
+    }];
+    
+    while (dispatch_semaphore_wait(semaphore, DISPATCH_TIME_NOW))
+        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
+                                 beforeDate:[NSDate dateWithTimeIntervalSinceNow:10]];
+    //    dispatch_release(semaphore);
 }
 
 @end

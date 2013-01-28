@@ -33,12 +33,19 @@
     
     RKObjectMapping *mapping = [cls objectMapping];
     NSIndexSet *codes = RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful);
+    
     RKResponseDescriptor *descriptor = nil;
     descriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping
                                                          pathPattern:path
                                                              keyPath:nil
                                                          statusCodes:codes];
-    [[RKObjectManager sharedManager] addResponseDescriptorsFromArray:@[descriptor]];
+    RKResponseDescriptor *objectDescriptor = nil;
+    objectDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping
+                                                               pathPattern:pattern
+                                                                   keyPath:nil
+                                                               statusCodes:codes];
+    
+    [[RKObjectManager sharedManager] addResponseDescriptorsFromArray:@[descriptor, objectDescriptor]];
     
 }
 
