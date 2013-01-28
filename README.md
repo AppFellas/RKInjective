@@ -5,7 +5,7 @@
 
 * Using `cocoapods`
 
-``` objc
+``` ruby
 pod 'RKInjective', :podspec => 'https://raw.github.com/AppFellas/RKInjective/master/RKInjective.podspec'
 ```
 
