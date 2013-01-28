@@ -22,6 +22,7 @@ typedef void ( ^RKIFailureBlock ) (  NSError *error );
 + (NSString *)modelNamePlural;
 + (RKObjectMapping *)objectMapping;
 + (NSDictionary *)objectMappingDictionary;
++ (NSString *)uniqueIdentifierName;
 - (id)uniqueIdentifier;
 + (void)getObjectsOnSuccess:(RKIObjectsSuccessBlock)success failure:(RKIFailureBlock)failure;
 - (void)getObjectOnSuccess:(RKIObjectSuccessBlock)success failure:(RKIFailureBlock)failure;

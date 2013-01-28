@@ -22,7 +22,7 @@
 
 + (NSDictionary *)objectMappingDictionary {
     
-    NSString *modelIdentifier = [[self modelName] stringByAppendingString:@"Id"];
+    NSString *modelIdentifier = [self uniqueIdentifierName];
     
     unsigned int count;
     objc_property_t *list = class_copyPropertyList([self class], &count);
@@ -31,7 +31,7 @@
     
     for (unsigned i = 0; i < count; i++) {
         NSString *name = [NSString stringWithUTF8String:property_getName(list[i])];
-        if ([name isEqualToString:@"itemId"] || [name isEqualToString:modelIdentifier]) {
+        if ([name isEqualToString:modelIdentifier]) {
             [dict setObject:name forKey:@"id"];
         } else {
             [dict setObject:name forKey:[name underscore]];
@@ -50,11 +50,22 @@
     return mapping;
 }
 
++ (NSString *)uniqueIdentifierName {
+    NSString *itemIdSel = @"itemId";
+    if ([self instancesRespondToSelector:NSSelectorFromString(itemIdSel)]) {
+        return itemIdSel;
+    }
+    return [[self modelName] stringByAppendingString:@"Id"];
+}
+
 - (id)uniqueIdentifier {
-    NSString *_uniqueIdentifier = [[[self class] modelName] stringByAppendingString:@"Id"];
+    NSString *_uniqueIdentifier = [[self class] uniqueIdentifierName];
     SEL _getUniqueIdentifier = NSSelectorFromString(_uniqueIdentifier);
     if ([self respondsToSelector:_getUniqueIdentifier]) {
-        id _uniqueIdentifier = [self performSelector:_getUniqueIdentifier];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+        id _uniqueIdentifier =  [self performSelector:_getUniqueIdentifier];
+#pragma clang diagnostic pop
         return _uniqueIdentifier;
     }
     return nil;
