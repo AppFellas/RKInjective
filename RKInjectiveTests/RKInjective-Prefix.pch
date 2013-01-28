@@ -1,0 +1,16 @@
+//
+//  Tests.pch
+//  RKInjective
+//
+//  Created by Taras Kalapun on 1/28/13.
+//  Copyright (c) 2013 AppFellas. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <MobileCoreServices/MobileCoreServices.h>
+
+#import "RKInjective.h"
+
+#define EXP_SHORTHAND
+#import "Expecta.h"

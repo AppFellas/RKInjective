@@ -12,6 +12,7 @@ pod 'Inflections'
 pod 'RestKit'
 
 # Helpers
+pod 'Expecta'
 
 # Social
 

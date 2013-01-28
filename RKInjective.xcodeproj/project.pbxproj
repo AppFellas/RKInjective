@@ -7,97 +7,88 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5591803A16B6A6BC002FA784 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5591803916B6A6BC002FA784 /* UIKit.framework */; };
-		5591803C16B6A6BC002FA784 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5591803B16B6A6BC002FA784 /* Foundation.framework */; };
-		5591803E16B6A6BC002FA784 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5591803D16B6A6BC002FA784 /* CoreGraphics.framework */; };
-		5591804416B6A6BC002FA784 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5591804216B6A6BC002FA784 /* InfoPlist.strings */; };
-		5591804616B6A6BC002FA784 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5591804516B6A6BC002FA784 /* main.m */; };
-		5591804A16B6A6BC002FA784 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5591804916B6A6BC002FA784 /* AppDelegate.m */; };
-		5591804C16B6A6BC002FA784 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5591804B16B6A6BC002FA784 /* Default.png */; };
-		5591804E16B6A6BC002FA784 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5591804D16B6A6BC002FA784 /* Default@2x.png */; };
-		5591805016B6A6BC002FA784 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5591804F16B6A6BC002FA784 /* Default-568h@2x.png */; };
+		5579DFEE16B6AACC00ABC558 /* ArticleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5579DFED16B6AACC00ABC558 /* ArticleTests.m */; };
+		5579DFF016B6ABCD00ABC558 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5579DFEF16B6ABCD00ABC558 /* SystemConfiguration.framework */; };
+		5579DFF216B6ABD300ABC558 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5579DFF116B6ABD300ABC558 /* CFNetwork.framework */; };
+		5579DFF416B6AC2900ABC558 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5579DFF316B6AC2900ABC558 /* MobileCoreServices.framework */; };
+		5579E00116B6ACDE00ABC558 /* RKInjective.m in Sources */ = {isa = PBXBuildFile; fileRef = 5579E00016B6ACDE00ABC558 /* RKInjective.m */; };
+		5579E00416B6AD0F00ABC558 /* RKInjectiveStubObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5579E00316B6AD0F00ABC558 /* RKInjectiveStubObject.m */; };
 		5591805816B6A6BC002FA784 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5591805716B6A6BC002FA784 /* SenTestingKit.framework */; };
 		5591805916B6A6BC002FA784 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5591803916B6A6BC002FA784 /* UIKit.framework */; };
 		5591805A16B6A6BC002FA784 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5591803B16B6A6BC002FA784 /* Foundation.framework */; };
 		5591806216B6A6BC002FA784 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5591806016B6A6BC002FA784 /* InfoPlist.strings */; };
-		5591806516B6A6BC002FA784 /* RKInjectiveTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5591806416B6A6BC002FA784 /* RKInjectiveTests.m */; };
-		C0CE31D88D3C416F8AE135B8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 53FDE2FC4D0649C1BF18E3B8 /* libPods.a */; };
+		5591808916B6A92D002FA784 /* Article.m in Sources */ = {isa = PBXBuildFile; fileRef = 5591808816B6A92D002FA784 /* Article.m */; };
+		E936F78E4F9E4479AFEAD4C8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF68E4B29A9F497983FFB80C /* libPods.a */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		5591805B16B6A6BC002FA784 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5591802C16B6A6BC002FA784 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5591803416B6A6BC002FA784;
-			remoteInfo = RKInjective;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		53FDE2FC4D0649C1BF18E3B8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		5591803516B6A6BC002FA784 /* RKInjective.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RKInjective.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		319D5C993292420E9B06B47F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		5579DFEC16B6AACC00ABC558 /* ArticleTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleTests.h; sourceTree = "<group>"; };
+		5579DFED16B6AACC00ABC558 /* ArticleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleTests.m; sourceTree = "<group>"; };
+		5579DFEF16B6ABCD00ABC558 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		5579DFF116B6ABD300ABC558 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		5579DFF316B6AC2900ABC558 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		5579DFFF16B6ACDE00ABC558 /* RKInjective.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKInjective.h; sourceTree = "<group>"; };
+		5579E00016B6ACDE00ABC558 /* RKInjective.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKInjective.m; sourceTree = "<group>"; };
+		5579E00216B6AD0F00ABC558 /* RKInjectiveStubObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKInjectiveStubObject.h; sourceTree = "<group>"; };
+		5579E00316B6AD0F00ABC558 /* RKInjectiveStubObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKInjectiveStubObject.m; sourceTree = "<group>"; };
 		5591803916B6A6BC002FA784 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5591803B16B6A6BC002FA784 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5591803D16B6A6BC002FA784 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		5591804116B6A6BC002FA784 /* RKInjective-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RKInjective-Info.plist"; sourceTree = "<group>"; };
-		5591804316B6A6BC002FA784 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		5591804516B6A6BC002FA784 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		5591804716B6A6BC002FA784 /* RKInjective-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RKInjective-Prefix.pch"; sourceTree = "<group>"; };
-		5591804816B6A6BC002FA784 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		5591804916B6A6BC002FA784 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		5591804B16B6A6BC002FA784 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		5591804D16B6A6BC002FA784 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		5591804F16B6A6BC002FA784 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		5591805616B6A6BC002FA784 /* RKInjectiveTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RKInjectiveTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5591805716B6A6BC002FA784 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		5591805F16B6A6BC002FA784 /* RKInjectiveTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RKInjectiveTests-Info.plist"; sourceTree = "<group>"; };
 		5591806116B6A6BC002FA784 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		5591806316B6A6BC002FA784 /* RKInjectiveTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RKInjectiveTests.h; sourceTree = "<group>"; };
-		5591806416B6A6BC002FA784 /* RKInjectiveTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RKInjectiveTests.m; sourceTree = "<group>"; };
-		E3B85CDFB23146BA8E2FBBB8 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		5591808716B6A92D002FA784 /* Article.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Article.h; path = Models/Article.h; sourceTree = "<group>"; };
+		5591808816B6A92D002FA784 /* Article.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Article.m; path = Models/Article.m; sourceTree = "<group>"; };
+		5591808A16B6A993002FA784 /* RKInjective-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RKInjective-Prefix.pch"; sourceTree = "<group>"; };
+		CF68E4B29A9F497983FFB80C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		5591803216B6A6BC002FA784 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5591803A16B6A6BC002FA784 /* UIKit.framework in Frameworks */,
-				5591803C16B6A6BC002FA784 /* Foundation.framework in Frameworks */,
-				5591803E16B6A6BC002FA784 /* CoreGraphics.framework in Frameworks */,
-				C0CE31D88D3C416F8AE135B8 /* libPods.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		5591805216B6A6BC002FA784 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5579DFF416B6AC2900ABC558 /* MobileCoreServices.framework in Frameworks */,
+				5579DFF216B6ABD300ABC558 /* CFNetwork.framework in Frameworks */,
+				5579DFF016B6ABCD00ABC558 /* SystemConfiguration.framework in Frameworks */,
 				5591805816B6A6BC002FA784 /* SenTestingKit.framework in Frameworks */,
 				5591805916B6A6BC002FA784 /* UIKit.framework in Frameworks */,
 				5591805A16B6A6BC002FA784 /* Foundation.framework in Frameworks */,
+				E936F78E4F9E4479AFEAD4C8 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5579DFFE16B6ACDE00ABC558 /* RKInjective */ = {
+			isa = PBXGroup;
+			children = (
+				5579DFFF16B6ACDE00ABC558 /* RKInjective.h */,
+				5579E00016B6ACDE00ABC558 /* RKInjective.m */,
+				5579E00216B6AD0F00ABC558 /* RKInjectiveStubObject.h */,
+				5579E00316B6AD0F00ABC558 /* RKInjectiveStubObject.m */,
+			);
+			path = RKInjective;
+			sourceTree = "<group>";
+		};
 		5591802A16B6A6BC002FA784 = {
 			isa = PBXGroup;
 			children = (
-				5591803F16B6A6BC002FA784 /* RKInjective */,
+				5579DFFE16B6ACDE00ABC558 /* RKInjective */,
+				5591808316B6A906002FA784 /* Models */,
 				5591805D16B6A6BC002FA784 /* RKInjectiveTests */,
 				5591803816B6A6BC002FA784 /* Frameworks */,
 				5591803616B6A6BC002FA784 /* Products */,
-				E3B85CDFB23146BA8E2FBBB8 /* Pods.xcconfig */,
+				319D5C993292420E9B06B47F /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
 		5591803616B6A6BC002FA784 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5591803516B6A6BC002FA784 /* RKInjective.app */,
 				5591805616B6A6BC002FA784 /* RKInjectiveTests.octest */,
 			);
 			name = Products;
@@ -106,46 +97,24 @@
 		5591803816B6A6BC002FA784 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5579DFF316B6AC2900ABC558 /* MobileCoreServices.framework */,
+				5579DFF116B6ABD300ABC558 /* CFNetwork.framework */,
+				5579DFEF16B6ABCD00ABC558 /* SystemConfiguration.framework */,
 				5591803916B6A6BC002FA784 /* UIKit.framework */,
 				5591803B16B6A6BC002FA784 /* Foundation.framework */,
 				5591803D16B6A6BC002FA784 /* CoreGraphics.framework */,
 				5591805716B6A6BC002FA784 /* SenTestingKit.framework */,
-				53FDE2FC4D0649C1BF18E3B8 /* libPods.a */,
+				CF68E4B29A9F497983FFB80C /* libPods.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		5591803F16B6A6BC002FA784 /* RKInjective */ = {
-			isa = PBXGroup;
-			children = (
-				5591807C16B6A7F1002FA784 /* Models */,
-				5591804816B6A6BC002FA784 /* AppDelegate.h */,
-				5591804916B6A6BC002FA784 /* AppDelegate.m */,
-				5591804016B6A6BC002FA784 /* Supporting Files */,
-			);
-			path = RKInjective;
-			sourceTree = "<group>";
-		};
-		5591804016B6A6BC002FA784 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				5591804116B6A6BC002FA784 /* RKInjective-Info.plist */,
-				5591804216B6A6BC002FA784 /* InfoPlist.strings */,
-				5591804516B6A6BC002FA784 /* main.m */,
-				5591804716B6A6BC002FA784 /* RKInjective-Prefix.pch */,
-				5591804B16B6A6BC002FA784 /* Default.png */,
-				5591804D16B6A6BC002FA784 /* Default@2x.png */,
-				5591804F16B6A6BC002FA784 /* Default-568h@2x.png */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		5591805D16B6A6BC002FA784 /* RKInjectiveTests */ = {
 			isa = PBXGroup;
 			children = (
-				5591806316B6A6BC002FA784 /* RKInjectiveTests.h */,
-				5591806416B6A6BC002FA784 /* RKInjectiveTests.m */,
 				5591805E16B6A6BC002FA784 /* Supporting Files */,
+				5579DFEC16B6AACC00ABC558 /* ArticleTests.h */,
+				5579DFED16B6AACC00ABC558 /* ArticleTests.m */,
 			);
 			path = RKInjectiveTests;
 			sourceTree = "<group>";
@@ -155,13 +124,16 @@
 			children = (
 				5591805F16B6A6BC002FA784 /* RKInjectiveTests-Info.plist */,
 				5591806016B6A6BC002FA784 /* InfoPlist.strings */,
+				5591808A16B6A993002FA784 /* RKInjective-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		5591807C16B6A7F1002FA784 /* Models */ = {
+		5591808316B6A906002FA784 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5591808716B6A92D002FA784 /* Article.h */,
+				5591808816B6A92D002FA784 /* Article.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -169,24 +141,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5591803416B6A6BC002FA784 /* RKInjective */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5591806816B6A6BC002FA784 /* Build configuration list for PBXNativeTarget "RKInjective" */;
-			buildPhases = (
-				5591803116B6A6BC002FA784 /* Sources */,
-				5591803216B6A6BC002FA784 /* Frameworks */,
-				5591803316B6A6BC002FA784 /* Resources */,
-				4CCB6DBF0BC947389314C653 /* Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = RKInjective;
-			productName = RKInjective;
-			productReference = 5591803516B6A6BC002FA784 /* RKInjective.app */;
-			productType = "com.apple.product-type.application";
-		};
 		5591805516B6A6BC002FA784 /* RKInjectiveTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5591806B16B6A6BC002FA784 /* Build configuration list for PBXNativeTarget "RKInjectiveTests" */;
@@ -195,11 +149,11 @@
 				5591805216B6A6BC002FA784 /* Frameworks */,
 				5591805316B6A6BC002FA784 /* Resources */,
 				5591805416B6A6BC002FA784 /* ShellScript */,
+				B96CAE303EDC45D1883CB27F /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				5591805C16B6A6BC002FA784 /* PBXTargetDependency */,
 			);
 			name = RKInjectiveTests;
 			productName = RKInjectiveTests;
@@ -227,24 +181,12 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5591803416B6A6BC002FA784 /* RKInjective */,
 				5591805516B6A6BC002FA784 /* RKInjectiveTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		5591803316B6A6BC002FA784 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5591804416B6A6BC002FA784 /* InfoPlist.strings in Resources */,
-				5591804C16B6A6BC002FA784 /* Default.png in Resources */,
-				5591804E16B6A6BC002FA784 /* Default@2x.png in Resources */,
-				5591805016B6A6BC002FA784 /* Default-568h@2x.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		5591805316B6A6BC002FA784 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -256,20 +198,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4CCB6DBF0BC947389314C653 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
-		};
 		5591805416B6A6BC002FA784 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -283,45 +211,37 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
+		B96CAE303EDC45D1883CB27F /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		5591803116B6A6BC002FA784 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5591804616B6A6BC002FA784 /* main.m in Sources */,
-				5591804A16B6A6BC002FA784 /* AppDelegate.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		5591805116B6A6BC002FA784 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5591806516B6A6BC002FA784 /* RKInjectiveTests.m in Sources */,
+				5591808916B6A92D002FA784 /* Article.m in Sources */,
+				5579DFEE16B6AACC00ABC558 /* ArticleTests.m in Sources */,
+				5579E00116B6ACDE00ABC558 /* RKInjective.m in Sources */,
+				5579E00416B6AD0F00ABC558 /* RKInjectiveStubObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		5591805C16B6A6BC002FA784 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5591803416B6A6BC002FA784 /* RKInjective */;
-			targetProxy = 5591805B16B6A6BC002FA784 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
-		5591804216B6A6BC002FA784 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5591804316B6A6BC002FA784 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		5591806016B6A6BC002FA784 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -383,60 +303,34 @@
 			};
 			name = Release;
 		};
-		5591806916B6A6BC002FA784 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E3B85CDFB23146BA8E2FBBB8 /* Pods.xcconfig */;
-			buildSettings = {
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "RKInjective/RKInjective-Prefix.pch";
-				INFOPLIST_FILE = "RKInjective/RKInjective-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Debug;
-		};
-		5591806A16B6A6BC002FA784 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E3B85CDFB23146BA8E2FBBB8 /* Pods.xcconfig */;
-			buildSettings = {
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "RKInjective/RKInjective-Prefix.pch";
-				INFOPLIST_FILE = "RKInjective/RKInjective-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
 		5591806C16B6A6BC002FA784 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 319D5C993292420E9B06B47F /* Pods.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RKInjective.app/RKInjective";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "RKInjective/RKInjective-Prefix.pch";
+				GCC_PREFIX_HEADER = "RKInjectiveTests/RKInjective-Prefix.pch";
 				INFOPLIST_FILE = "RKInjectiveTests/RKInjectiveTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
 		5591806D16B6A6BC002FA784 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 319D5C993292420E9B06B47F /* Pods.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RKInjective.app/RKInjective";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "RKInjective/RKInjective-Prefix.pch";
+				GCC_PREFIX_HEADER = "RKInjectiveTests/RKInjective-Prefix.pch";
 				INFOPLIST_FILE = "RKInjectiveTests/RKInjectiveTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
@@ -449,15 +343,6 @@
 			buildConfigurations = (
 				5591806616B6A6BC002FA784 /* Debug */,
 				5591806716B6A6BC002FA784 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		5591806816B6A6BC002FA784 /* Build configuration list for PBXNativeTarget "RKInjective" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5591806916B6A6BC002FA784 /* Debug */,
-				5591806A16B6A6BC002FA784 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

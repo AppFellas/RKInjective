@@ -1,6 +1,7 @@
 
 PODS:
 - AFNetworking (1.1.0)
+- Expecta (0.2.1)
 - Inflections (1.0.0):
   - RegexKitLite
 - Injective (0.2.2)
@@ -22,12 +23,14 @@ PODS:
 - SOCKit (1.1)
 
 DEPENDENCIES:
+- Expecta
 - Inflections
 - Injective
 - RestKit
 
 SPEC CHECKSUMS:
   AFNetworking: 761a418233d280c1e0580bcb76ff9cb4c3073d17
+  Expecta: d46fb1bd78c90a83da0158b9b1e108de106e369f
   Inflections: e77c455409381402163911a75835892fd406ff99
   Injective: a8f4359fdd252b9b3323f2f7341534ba49e1b631
   RegexKitLite: 293ff6f3cf8f34277989a37802162c6961a2b35a

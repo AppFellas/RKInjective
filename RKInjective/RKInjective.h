@@ -25,7 +25,7 @@ typedef void ( ^RKIFailureBlock ) (  NSError *error );
 + (void)getObjectsOnSuccess:(RKIObjectsSuccessBlock)success failure:(RKIFailureBlock)failure;
 @end
 
-#define restkit_register(cls) \
+#define rkinjective_register(cls) \
     + (void)initialize	\
     { \
         if(self == [cls class]) { \
