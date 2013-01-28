@@ -34,4 +34,9 @@
     expect(dict).to.equal(dict2);
 }
 
+- (void)testUniqueIdentifier {
+    Article *article = [Article new];
+    expect([article uniqueIdentifier]).to.equal(@"stub");
+}
+
 @end

@@ -35,31 +35,59 @@
     
 }
 
++ (void)addClassMethodsToClass:(Class)cls {
+    Class stubObjClass = [RKInjectiveStubObject class];
+    Protocol *protocol = @protocol(RKInjectiveProtocol);
+    
+    unsigned int count;
+    struct objc_method_description *methods = protocol_copyMethodDescriptionList(protocol, NO, NO, &count);
+    for (unsigned i = 0; i < count; i++)
+    {
+        SEL selector = methods[i].name;
+        NSLog(@"[Class] checking: %@", NSStringFromSelector(selector));
+        if (![cls respondsToSelector:selector]) {
+            //addDefaultImplementation
+            Method method = class_getClassMethod(stubObjClass, selector);
+            char *signature = methods[i].types;
+            IMP implementation = method_getImplementation(method);
+            class_addMethod(object_getClass(cls), selector, implementation, signature);
+        }
+    }
+    free(methods);
+}
+
++ (void)addInstanceMethodsToClass:(Class)cls {
+    Class stubObjClass = [RKInjectiveStubObject class];
+    Protocol *protocol = @protocol(RKInjectiveProtocol);
+    
+    unsigned int count;
+    struct objc_method_description *methods = protocol_copyMethodDescriptionList(protocol, NO, YES, &count);
+    for (unsigned i = 0; i < count; i++)
+    {
+        SEL selector = methods[i].name;
+        NSLog(@"[Instance] checking: %@", NSStringFromSelector(selector));
+        if (![cls respondsToSelector:selector]) {
+            //addDefaultImplementation
+            Method method = class_getInstanceMethod(stubObjClass, selector);
+            char *signature = methods[i].types;
+            IMP implementation = method_getImplementation(method);
+            class_addMethod(cls, selector, implementation, signature);
+        }
+    }
+    free(methods);
+}
+
 + (void)registerClass:(Class)cls {
     
     if (nil == [RKObjectManager sharedManager]) {
         assert(@"RKObject manager doesnt exist");
     }
     
-    Class stubObjClass = [RKInjectiveStubObject class];
-    Protocol *protocol = @protocol(RKInjectiveProtocol);
-    
-    if ( class_conformsToProtocol(cls, protocol) ) {
+    if ( class_conformsToProtocol(cls, @protocol(RKInjectiveProtocol)) ) {
         
-        unsigned int count;
-        struct objc_method_description *methods = protocol_copyMethodDescriptionList(protocol, NO, NO, &count);
-        for (unsigned i = 0; i < count; i++)
-        {
-            SEL selector = methods[i].name;
-            if (![cls respondsToSelector:selector]) {
-                //addDefaultImplementation
-                Method method = class_getClassMethod(stubObjClass, selector);
-                char *signature = methods[i].types;
-                IMP implementation = method_getImplementation(method);
-                class_addMethod(object_getClass(cls), selector, implementation, signature);
-            }
-        }
-        free(methods);
+        [[self class] addClassMethodsToClass:cls];
+        [[self class] addInstanceMethodsToClass:cls];
+        
         
         //[RKInjective setupMappingForClass:cls];
         [RKInjective setupRoutesForClass:cls];

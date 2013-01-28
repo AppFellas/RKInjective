@@ -22,7 +22,9 @@ typedef void ( ^RKIFailureBlock ) (  NSError *error );
 + (NSString *)modelNamePlural;
 + (RKObjectMapping *)objectMapping;
 + (NSDictionary *)objectMappingDictionary;
+- (id)uniqueIdentifier;
 + (void)getObjectsOnSuccess:(RKIObjectsSuccessBlock)success failure:(RKIFailureBlock)failure;
+- (void)getObjectOnSuccess:(RKIObjectsSuccessBlock)success failure:(RKIFailureBlock)failure;
 @end
 
 #define rkinjective_register(cls) \

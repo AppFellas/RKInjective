@@ -50,6 +50,10 @@
     return mapping;
 }
 
+- (id)uniqueIdentifier {
+    return @"stub";
+}
+
 + (void)getObjectsOnSuccess:(RKIObjectsSuccessBlock)success failure:(RKIFailureBlock)failure {
     NSString *routeName = [self modelNamePlural];
     [[RKObjectManager sharedManager] getObjectsAtPathForRouteNamed:routeName object:nil parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
