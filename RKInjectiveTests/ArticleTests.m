@@ -8,6 +8,7 @@
 
 #import "ArticleTests.h"
 #import "Article.h"
+#import "Record.h"
 
 @implementation ArticleTests
 
@@ -97,6 +98,54 @@
     Article *article = [Article new];
     article.articleId = @"10000";
     [article getObjectOnSuccess:^(id object) {
+        STAssertNotNil(object, @"Could not load objects");
+        expect(object).toNot.beNil();
+        dispatch_semaphore_signal(semaphore);
+    } failure:^(NSError *error) {
+        STAssertNil(error, @"Should be no error on object loading");
+        dispatch_semaphore_signal(semaphore);
+    }];
+    
+    while (dispatch_semaphore_wait(semaphore, DISPATCH_TIME_NOW))
+        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
+                                 beforeDate:[NSDate dateWithTimeIntervalSinceNow:10]];
+    //    dispatch_release(semaphore);
+}
+
+- (void)testGetObjectsWithPath {
+    NSString *data = [RKTestFixture stringWithContentsOfFixture:@"articles.json"];
+    stubRequest(@"GET", @"http://localhost/api_records").andReturn(200).
+    withHeaders(@{@"Content-Type": @"application/json"}).withBody(data);
+    
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    
+    [Record getObjectsOnSuccess:^(NSArray *objects) {
+        STAssertNotNil(objects, @"Could not load objects");
+        expect(objects).toNot.beNil();
+        expect(objects.count).to.equal(3);
+        dispatch_semaphore_signal(semaphore);
+    } failure:^(NSError *error) {
+        STAssertNil(error, @"Should be no error on object loading");
+        dispatch_semaphore_signal(semaphore);
+    }];
+    
+    while (dispatch_semaphore_wait(semaphore, DISPATCH_TIME_NOW))
+        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
+                                 beforeDate:[NSDate dateWithTimeIntervalSinceNow:10]];
+    //    dispatch_release(semaphore);
+}
+
+
+- (void)testGetObjectWithPath {
+    NSString *data = [RKTestFixture stringWithContentsOfFixture:@"article.json"];
+    stubRequest(@"GET", @"http://localhost/api_records/10000").andReturn(200).
+    withHeaders(@{@"Content-Type": @"application/json"}).withBody(data);
+    
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    
+    Record *record = [Record new];
+    record.itemId = @"10000";
+    [record getObjectOnSuccess:^(id object) {
         STAssertNotNil(object, @"Could not load objects");
         expect(object).toNot.beNil();
         dispatch_semaphore_signal(semaphore);

@@ -68,8 +68,19 @@
     return mapping;
 }
 
-+ (NSString *)parhForRequestType:(RKIRequestType)requestType {
-    return nil;
++ (NSString *)pathForRequestType:(RKIRequestType)requestType {
+    NSString *path = nil;
+    switch (requestType) {
+        case RKIRequestGetObject: {
+            path = [[self modelNamePlural] stringByAppendingFormat:@"/:%@", [self uniqueIdentifierName]];
+            break;
+        }
+        default: {
+            path = [self modelNamePlural];
+            break;
+        }
+    }
+    return path;
 }
 
 + (NSString *)uniqueIdentifierName {

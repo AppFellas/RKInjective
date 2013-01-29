@@ -10,7 +10,9 @@
 
 typedef enum {
     RKIRequestGetObjects = 0,
-    RKIRequestGetObject
+    RKIRequestGetObject,
+    RKIRequestPostObjects,
+    RKIRequestPostObject,
 } RKIRequestType;
 
 typedef void ( ^RKIObjectsSuccessBlock ) ( NSArray *objects );
@@ -28,7 +30,7 @@ typedef void ( ^RKIFailureBlock ) (  NSError *error );
 + (RKObjectMapping *)objectMapping;
 + (NSDictionary *)objectMappingDictionary;
 + (NSString *)uniqueIdentifierName;
-+ (NSString *)parhForRequestType:(RKIRequestType)requestType;
++ (NSString *)pathForRequestType:(RKIRequestType)requestType;
 - (id)uniqueIdentifier;
 + (void)getObjectsOnSuccess:(RKIObjectsSuccessBlock)success failure:(RKIFailureBlock)failure;
 - (void)getObjectOnSuccess:(RKIObjectSuccessBlock)success failure:(RKIFailureBlock)failure;
