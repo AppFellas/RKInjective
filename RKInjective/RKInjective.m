@@ -11,26 +11,23 @@
 #import "RKInjectiveStubObject.h"
 #import "NSString+Inflections.h"
 
+static inline BOOL IsEmpty(id thing) {
+    return thing == nil
+    || ([thing respondsToSelector:@selector(length)]
+        && [(NSData *)thing length] == 0)
+    || ([thing respondsToSelector:@selector(count)]
+        && [(NSArray *)thing count] == 0);
+}
 
 @implementation RKInjective
 
-+ (void)setupRoutesForClass:(Class)cls {
++ (void)setupObjectsRouteForClass:(Class)cls {
     RKRouter *router = [[RKObjectManager sharedManager] router];
-    
     NSString *path = [cls modelNamePlural];
-    RKRoute *getObjectsRoute = [RKRoute routeWithName:[cls modelNamePlural]
-                                          pathPattern:path
-                                               method:RKRequestMethodGET];
-    [router.routeSet addRoute:getObjectsRoute];
-    
-    NSString *modelId = [[cls modelName] stringByAppendingString:@"Id"];
-    NSString *pattern = [[cls modelNamePlural] stringByAppendingFormat:@"/:%@", modelId];
-    RKRoute *getObjectRoute = [RKRoute routeWithClass:cls
-                                          pathPattern:pattern
-                                               method:RKRequestMethodGET];
-    [router.routeSet addRoute:getObjectRoute];
-    
-    
+    RKRoute *objectsRoute = [RKRoute routeWithName:[cls modelNamePlural]
+                                       pathPattern:path
+                                            method:RKRequestMethodGET];
+    [router.routeSet addRoute:objectsRoute];
     RKObjectMapping *mapping = [cls objectMapping];
     NSIndexSet *codes = RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful);
     
@@ -39,14 +36,73 @@
                                                          pathPattern:path
                                                              keyPath:nil
                                                          statusCodes:codes];
-    RKResponseDescriptor *objectDescriptor = nil;
-    objectDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping
-                                                               pathPattern:pattern
-                                                                   keyPath:nil
-                                                               statusCodes:codes];
+    [[RKObjectManager sharedManager] addResponseDescriptor:descriptor];
+}
+
++ (void)setupObjectRouteForClass:(Class)cls {
+    RKRouter *router = [[RKObjectManager sharedManager] router];
+    NSString *objectId = [cls uniqueIdentifierName];
+    NSString *pattern = [[cls modelNamePlural] stringByAppendingFormat:@"/:%@", objectId];
+    RKRoute *objectRoute = [RKRoute routeWithClass:cls
+                                       pathPattern:pattern
+                                            method:RKRequestMethodGET];
+    [router.routeSet addRoute:objectRoute];
+    RKObjectMapping *mapping = [cls objectMapping];
+    NSIndexSet *codes = RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful);
+    RKResponseDescriptor *descriptor = nil;
+    descriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping
+                                                         pathPattern:pattern
+                                                             keyPath:nil
+                                                         statusCodes:codes];
+    [[RKObjectManager sharedManager] addResponseDescriptor:descriptor];
+}
+
++ (void)setupObjectsRouteForClass:(Class)cls path:(NSString *)path {
+    RKRouter *router = [[RKObjectManager sharedManager] router];
+    RKRoute *objectsRoute = [RKRoute routeWithName:[cls modelNamePlural]
+                                       pathPattern:path
+                                            method:RKRequestMethodGET];
+    [router.routeSet addRoute:objectsRoute];
+    RKObjectMapping *mapping = [cls objectMapping];
+    NSIndexSet *codes = RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful);
     
-    [[RKObjectManager sharedManager] addResponseDescriptorsFromArray:@[descriptor, objectDescriptor]];
-    
+    RKResponseDescriptor *descriptor = nil;
+    descriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping
+                                                         pathPattern:path
+                                                             keyPath:nil
+                                                         statusCodes:codes];
+    [[RKObjectManager sharedManager] addResponseDescriptor:descriptor];
+}
+
++ (void)setupObjectRouteForClass:(Class)cls path:(NSString *)path {
+    RKRouter *router = [[RKObjectManager sharedManager] router];
+    RKRoute *objectRoute = [RKRoute routeWithClass:cls
+                                       pathPattern:path
+                                            method:RKRequestMethodGET];
+    [router.routeSet addRoute:objectRoute];
+    RKObjectMapping *mapping = [cls objectMapping];
+    NSIndexSet *codes = RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful);
+    RKResponseDescriptor *descriptor = nil;
+    descriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping
+                                                         pathPattern:path
+                                                             keyPath:nil
+                                                         statusCodes:codes];
+    [[RKObjectManager sharedManager] addResponseDescriptor:descriptor];
+}
+
++ (void)setupRoutesForClass:(Class)cls {
+    NSString *objectsPath = [cls parhForRequestType:RKIRequestGetObjects];
+    NSString *objectPath = [cls parhForRequestType:RKIRequestGetObject];
+    if ( IsEmpty(objectsPath) ) {
+        [[self class] setupObjectsRouteForClass:cls];
+    } else {
+        [[self class] setupObjectsRouteForClass:cls path:objectsPath];
+    }
+    if ( IsEmpty(objectPath) ) {
+        [[self class] setupObjectRouteForClass:cls];
+    } else {
+        [[self class] setupObjectRouteForClass:cls path:objectPath];
+    }
 }
 
 + (void)addClassMethodsToClass:(Class)cls {

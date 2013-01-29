@@ -68,6 +68,10 @@
     return mapping;
 }
 
++ (NSString *)parhForRequestType:(RKIRequestType)requestType {
+    return nil;
+}
+
 + (NSString *)uniqueIdentifierName {
     NSString *itemIdSel = @"itemId";
     if ([self instancesRespondToSelector:NSSelectorFromString(itemIdSel)]) {
@@ -100,6 +104,14 @@
 
 - (void)getObjectOnSuccess:(RKIObjectSuccessBlock)success failure:(RKIFailureBlock)failure {
     [[RKObjectManager sharedManager] getObject:self path:nil parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        success([mappingResult firstObject]);
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        failure(error);
+    }];
+}
+
+- (void)postObjectOnSuccess:(RKIObjectSuccessBlock)success failure:(RKIFailureBlock)failure {
+    [[RKObjectManager sharedManager] postObject:self path:nil parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         success([mappingResult firstObject]);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         failure(error);
