@@ -10,4 +10,7 @@
 
 @implementation ManagedObject
 //rkinjective_register(ManagedObject) // TODO
+
+@dynamic name;
+
 @end

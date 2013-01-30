@@ -11,6 +11,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 
 #import "RKInjective.h"
+#import <RestKit/RestKit.h>
 #import <RestKit/Testing.h>
 
 #import "SenTest+Async.h"
