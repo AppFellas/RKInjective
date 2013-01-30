@@ -1,5 +1,5 @@
 //
-//  ManagedObjectTests.h
+//  MappingTests.h
 //  RKInjective
 //
 //  Created by Taras Kalapun on 1/30/13.
@@ -8,6 +8,6 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
-@interface ManagedObjectTests : SenTestCase
+@interface MappingTests : SenTestCase
 
 @end

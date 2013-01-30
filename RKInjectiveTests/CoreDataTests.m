@@ -1,37 +1,27 @@
 //
-//  ManagedObjectTests.m
+//  CoreDataTests.m
 //  RKInjective
 //
 //  Created by Taras Kalapun on 1/30/13.
 //  Copyright (c) 2013 AppFellas. All rights reserved.
 //
 
-#import "ManagedObjectTests.h"
+#import "CoreDataTests.h"
 #import "ManagedObject.h"
 
-@implementation ManagedObjectTests
+@implementation CoreDataTests
 
-+ (void)checkPathForCoreDataFile {
-    NSString *path = RKApplicationDataDirectory();
-    NSError *error = nil;
-    BOOL isDir = YES;
-    NSFileManager *fm= [NSFileManager defaultManager];
-    if (![fm fileExistsAtPath:path isDirectory:&isDir]) {
-        if (![fm createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error]) {
-            NSLog(@"Error: Create folder failed");
-        }
-    }
+- (void)setUp {
+    [RKTestFactory setUp];
 }
 
-+ (void)initialize {
-    [self checkPathForCoreDataFile];
-    RKManagedObjectStore *managedObjectStore = [RKTestFactory managedObjectStore];
-    [RKManagedObjectStore setDefaultStore:managedObjectStore];
+- (void)tearDown {
+    [RKTestFactory tearDown];
 }
 
 - (void)testCoreDataIntegration {
     RKManagedObjectStore *managedObjectStore = [RKManagedObjectStore defaultStore];
-
+    
     expect(managedObjectStore).toNot.beNil();
     
     NSManagedObjectContext *moc = managedObjectStore.persistentStoreManagedObjectContext;
