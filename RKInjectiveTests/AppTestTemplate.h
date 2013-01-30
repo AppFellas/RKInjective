@@ -1,5 +1,5 @@
 //
-//  MappingTests.h
+//  AppTestTemplate.h
 //  RKInjective
 //
 //  Created by Taras Kalapun on 1/30/13.
@@ -7,7 +7,11 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
+#import "Article.h"
+#import "Record.h"
+#import "ManagedObject.h"
 
-@interface MappingTests : AppTestTemplate
+
+@interface AppTestTemplate : SenTestCase
 
 @end

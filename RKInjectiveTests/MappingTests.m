@@ -7,17 +7,8 @@
 //
 
 #import "MappingTests.h"
-#import "Article.h"
 
 @implementation MappingTests
-
-- (void)setUp {
-    [RKTestFactory setUp];
-}
-
-- (void)tearDown {
-    [RKTestFactory tearDown];
-}
 
 - (void)testObjectMappingDictionary {
     NSDictionary *dict = [Article objectMappingDictionary];

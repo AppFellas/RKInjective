@@ -7,17 +7,8 @@
 //
 
 #import "ModelTests.h"
-#import "Article.h"
 
 @implementation ModelTests
-
-- (void)setUp {
-    [RKTestFactory setUp];
-}
-
-- (void)tearDown {
-    [RKTestFactory tearDown];
-}
 
 - (void)testModelName {
     expect([Article modelName]).to.equal(@"article");

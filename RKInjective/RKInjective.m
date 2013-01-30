@@ -31,6 +31,7 @@
                                             method:RKRequestMethodGET];
     [[[self class] sharedRouterRouteSet] addRoute:objectsRoute];
     RKObjectMapping *mapping = [cls objectMapping];
+    if (!mapping) return;
     NSIndexSet *codes = RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful);
     
     RKResponseDescriptor *descriptor = nil;
@@ -51,6 +52,7 @@
                                             method:RKRequestMethodGET];
     [[[self class] sharedRouterRouteSet] addRoute:objectRoute];
     RKObjectMapping *mapping = [cls objectMapping];
+    if (!mapping) return;
     NSIndexSet *codes = RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful);
     RKResponseDescriptor *descriptor = nil;
     descriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping

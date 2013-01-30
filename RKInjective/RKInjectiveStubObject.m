@@ -15,7 +15,8 @@
 @implementation RKInjectiveStubObject
 
 + (NSString *)modelName {
-    return [NSStringFromClass([self class]) lowercaseString];
+    // TODO: Fix for CoreData
+    return [NSStringFromClass([self class]) camelizeWithLowerFirstLetter];
 }
 
 + (NSString *)modelNamePlural {
@@ -25,6 +26,7 @@
 + (NSDictionary *)objectMappingDictionary {
     
     NSString *modelIdentifier = [self uniqueIdentifierName];
+    if (!modelIdentifier) return nil;
     
     unsigned int count;
     objc_property_t *list = class_copyPropertyList([self class], &count);
@@ -52,11 +54,16 @@
     // CoreData
     if ([cls isSubclassOfClass:[NSManagedObject class]]) {
         RKManagedObjectStore *store = [RKManagedObjectStore defaultStore];
-        RKEntityMapping *mapping = [RKEntityMapping mappingForEntityForName:[self modelName] inManagedObjectStore:store];
-        if (!mapping.identificationAttributes) {
+        //NSAssert(store, @"RKManagedObjectStore doesnt exist");
+        if (!store) return nil;
+        
+        // TODO: Fix for CoreData
+        NSString *modelName = NSStringFromClass([self class]);
+        RKEntityMapping *mapping = [RKEntityMapping mappingForEntityForName:modelName inManagedObjectStore:store];
+        if (!mapping.identificationAttributes && [self uniqueIdentifierName]) {
             mapping.identificationAttributes = @[[self uniqueIdentifierName]];
         }
-        if (!mapping.attributeMappings) {
+        if (!mapping.attributeMappings && [self objectMappingDictionary]) {
             [mapping addAttributeMappingsFromDictionary:[self objectMappingDictionary]];
         }
         return mapping;
@@ -92,7 +99,11 @@
     if ([self instancesRespondToSelector:NSSelectorFromString(itemIdSel)]) {
         return itemIdSel;
     }
-    return [[self modelName] stringByAppendingString:@"Id"];
+    itemIdSel = [[self modelName] stringByAppendingString:@"Id"];
+    if ([self instancesRespondToSelector:NSSelectorFromString(itemIdSel)]) {
+        return itemIdSel;
+    }
+    return nil;
 }
 
 - (id)uniqueIdentifier {

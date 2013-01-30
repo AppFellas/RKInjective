@@ -7,17 +7,8 @@
 //
 
 #import "CoreDataTests.h"
-#import "ManagedObject.h"
 
 @implementation CoreDataTests
-
-- (void)setUp {
-    [RKTestFactory setUp];
-}
-
-- (void)tearDown {
-    [RKTestFactory tearDown];
-}
 
 - (void)testCoreDataIntegration {
     RKManagedObjectStore *managedObjectStore = [RKManagedObjectStore defaultStore];

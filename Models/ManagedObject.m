@@ -9,7 +9,7 @@
 #import "ManagedObject.h"
 
 @implementation ManagedObject
-//rkinjective_register(ManagedObject) // TODO
+rkinjective_register(ManagedObject)
 
 @dynamic name;
 

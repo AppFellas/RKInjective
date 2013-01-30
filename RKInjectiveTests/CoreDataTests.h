@@ -8,6 +8,6 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
-@interface CoreDataTests : SenTestCase
+@interface CoreDataTests : AppTestTemplate
 
 @end

@@ -22,4 +22,5 @@
 #import "Nocilla.h"
 
 #import "RKTestFactory+AppExtensions.h"
+#import "AppTestTemplate.h"
 

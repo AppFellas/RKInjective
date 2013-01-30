@@ -29,21 +29,22 @@
     NSBundle *testTargetBundle = [NSBundle bundleWithIdentifier:@"com.AppFellas.RKInjectiveTests"];
     [RKTestFixture setFixtureBundle:testTargetBundle];
     
-    [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://localhost/"]];
-    
     // Set logging levels
 	RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelDebug);
-    RKLogConfigureByName("RestKit/Network", RKLogLevelTrace);
+    RKLogConfigureByName("RestKit/Network", RKLogLevelDebug);
     
     // Setup CoreData
     [self checkPathForCoreDataFile];
 	
 	[self setSetupBlock:^{
+        [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://localhost/"]];
+        
         // Setup Network stubs
 		[[LSNocilla sharedInstance] start];
         
         // Core Data
-        [RKManagedObjectStore setDefaultStore:[RKTestFactory managedObjectStore]];
+        RKManagedObjectStore *store = [RKTestFactory managedObjectStore];
+        [RKManagedObjectStore setDefaultStore:store];
 	}];
 	
 	[self setTearDownBlock:^{

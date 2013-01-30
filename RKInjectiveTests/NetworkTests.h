@@ -8,6 +8,6 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
-@interface NetworkTests : SenTestCase
+@interface NetworkTests : AppTestTemplate
 
 @end

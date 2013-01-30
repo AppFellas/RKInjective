@@ -7,22 +7,8 @@
 //
 
 #import "NetworkTests.h"
-#import "Article.h"
-#import "Record.h"
 
 @implementation NetworkTests
-
-- (void)setUp {
-    [RKTestFactory setUp];
-    
-    RKObjectManager *m = [RKObjectManager sharedManager];
-    expect(m).to.beTruthy();
-    NSLog(@"RKObjectManager: %@", m);
-}
-
-- (void)tearDown {
-    [RKTestFactory tearDown];
-}
 
 - (void)testGetObjects {
     [RKTestFactory stubGetRequest:@"http://localhost/articles" withFixture:@"articles"];
