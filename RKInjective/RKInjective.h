@@ -31,6 +31,7 @@ typedef void ( ^RKIFailureBlock ) (  NSError *error );
 + (NSDictionary *)objectMappingDictionary;
 + (NSString *)uniqueIdentifierName;
 + (NSString *)pathForRequestType:(RKIRequestType)requestType;
++ (NSString *)defaultPathForRequestType:(RKIRequestType)requestType;
 - (id)uniqueIdentifier;
 + (void)getObjectsOnSuccess:(RKIObjectsSuccessBlock)success failure:(RKIFailureBlock)failure;
 - (void)getObjectOnSuccess:(RKIObjectSuccessBlock)success failure:(RKIFailureBlock)failure;

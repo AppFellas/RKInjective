@@ -69,6 +69,10 @@
 }
 
 + (NSString *)pathForRequestType:(RKIRequestType)requestType {
+    return nil;
+}
+
++ (NSString *)defaultPathForRequestType:(RKIRequestType)requestType {
     NSString *path = nil;
     switch (requestType) {
         case RKIRequestGetObject: {

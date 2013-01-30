@@ -23,6 +23,9 @@
 
 + (void)setupObjectsRouteForClass:(Class)cls {
     NSString *path = [cls pathForRequestType:RKIRequestGetObjects];
+    if ( nil == path ) {
+        path = [cls defaultPathForRequestType:RKIRequestGetObjects];
+    }
     RKRoute *objectsRoute = [RKRoute routeWithName:[cls modelNamePlural]
                                        pathPattern:path
                                             method:RKRequestMethodGET];
@@ -39,7 +42,10 @@
 }
 
 + (void)setupObjectRouteForClass:(Class)cls {
-    NSString *path = [cls pathForRequestType:RKIRequestGetObject];    
+    NSString *path = [cls pathForRequestType:RKIRequestGetObject];
+    if ( nil == path ) {
+        path = [cls defaultPathForRequestType:RKIRequestGetObject];
+    }
     RKRoute *objectRoute = [RKRoute routeWithClass:cls
                                        pathPattern:path
                                             method:RKRequestMethodGET];
