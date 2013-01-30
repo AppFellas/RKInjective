@@ -5,10 +5,11 @@
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="ManagedObject" representedClassName="ManagedObject" syncable="YES">
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="itemId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ManagedObject" positionX="160" positionY="192" width="128" height="60"/>
+        <element name="ManagedObject" positionX="160" positionY="192" width="128" height="75"/>
         <element name="Article" positionX="160" positionY="192" width="128" height="75"/>
     </elements>
 </model>

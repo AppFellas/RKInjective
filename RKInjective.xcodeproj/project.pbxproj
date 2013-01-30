@@ -15,6 +15,7 @@
 		5573FE3E16B94EC8004BFF9D /* MappingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5573FE3D16B94EC8004BFF9D /* MappingTests.m */; };
 		5573FE4116B94F01004BFF9D /* CoreDataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5573FE4016B94F01004BFF9D /* CoreDataTests.m */; };
 		5573FE4416B953AC004BFF9D /* AppTestTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5573FE4316B953AC004BFF9D /* AppTestTemplate.m */; };
+		5573FE4716B962DA004BFF9D /* NetworkCDTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5573FE4616B962DA004BFF9D /* NetworkCDTests.m */; };
 		5579DFF016B6ABCD00ABC558 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5579DFEF16B6ABCD00ABC558 /* SystemConfiguration.framework */; };
 		5579DFF216B6ABD300ABC558 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5579DFF116B6ABD300ABC558 /* CFNetwork.framework */; };
 		5579DFF416B6AC2900ABC558 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5579DFF316B6AC2900ABC558 /* MobileCoreServices.framework */; };
@@ -49,6 +50,8 @@
 		5573FE4016B94F01004BFF9D /* CoreDataTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTests.m; sourceTree = "<group>"; };
 		5573FE4216B953AC004BFF9D /* AppTestTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppTestTemplate.h; sourceTree = "<group>"; };
 		5573FE4316B953AC004BFF9D /* AppTestTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppTestTemplate.m; sourceTree = "<group>"; };
+		5573FE4516B962DA004BFF9D /* NetworkCDTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkCDTests.h; sourceTree = "<group>"; };
+		5573FE4616B962DA004BFF9D /* NetworkCDTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkCDTests.m; sourceTree = "<group>"; };
 		5579DFEF16B6ABCD00ABC558 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5579DFF116B6ABD300ABC558 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		5579DFF316B6AC2900ABC558 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -158,6 +161,8 @@
 				5573FE3716B94E13004BFF9D /* ModelTests.m */,
 				5573FE3916B94E78004BFF9D /* NetworkTests.h */,
 				5573FE3A16B94E78004BFF9D /* NetworkTests.m */,
+				5573FE4516B962DA004BFF9D /* NetworkCDTests.h */,
+				5573FE4616B962DA004BFF9D /* NetworkCDTests.m */,
 				5573FE3C16B94EC8004BFF9D /* MappingTests.h */,
 				5573FE3D16B94EC8004BFF9D /* MappingTests.m */,
 				5573FE3F16B94F01004BFF9D /* CoreDataTests.h */,
@@ -302,6 +307,7 @@
 				5573FE3E16B94EC8004BFF9D /* MappingTests.m in Sources */,
 				5573FE4116B94F01004BFF9D /* CoreDataTests.m in Sources */,
 				5573FE4416B953AC004BFF9D /* AppTestTemplate.m in Sources */,
+				5573FE4716B962DA004BFF9D /* NetworkCDTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

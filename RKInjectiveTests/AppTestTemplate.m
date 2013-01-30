@@ -21,6 +21,13 @@
 }
 
 - (void)tearDown {
+    
+    RKRouteSet *set = [RKObjectManager sharedManager].router.routeSet;
+    for (RKRoute *route in set.allRoutes) {
+        //[set removeRoute:route];
+        NSLog(@"route: %@", route);
+    }
+    
     [RKTestFactory tearDown];
 }
 

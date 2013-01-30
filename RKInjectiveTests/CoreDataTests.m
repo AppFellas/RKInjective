@@ -20,7 +20,7 @@
     
     
     ManagedObject *mo = [RKTestFactory insertManagedObjectForEntityForName:@"ManagedObject" inManagedObjectContext:moc withProperties:nil];
-    mo.name = @"SomeObject";
+    mo.title = @"SomeObject";
     
     [moc saveToPersistentStore:NULL];
     

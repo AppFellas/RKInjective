@@ -11,6 +11,6 @@
 @implementation ManagedObject
 rkinjective_register(ManagedObject)
 
-@dynamic name;
+@dynamic itemId, title;
 
 @end

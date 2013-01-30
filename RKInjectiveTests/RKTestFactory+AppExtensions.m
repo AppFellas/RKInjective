@@ -37,14 +37,15 @@
     [self checkPathForCoreDataFile];
 	
 	[self setSetupBlock:^{
-        [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://localhost/"]];
-        
         // Setup Network stubs
 		[[LSNocilla sharedInstance] start];
         
         // Core Data
         RKManagedObjectStore *store = [RKTestFactory managedObjectStore];
         [RKManagedObjectStore setDefaultStore:store];
+        
+        RKObjectManager *manager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://localhost/"]];
+        manager.managedObjectStore = store;
 	}];
 	
 	[self setTearDownBlock:^{

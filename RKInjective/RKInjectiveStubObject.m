@@ -16,7 +16,12 @@
 
 + (NSString *)modelName {
     // TODO: Fix for CoreData
-    return [NSStringFromClass([self class]) camelizeWithLowerFirstLetter];
+    NSString *ret = NSStringFromClass([self class]);
+    unichar l = [ret characterAtIndex:0];
+	NSString *letter = [[NSString stringWithCharacters:&l length:1] lowercaseString];
+	NSString *rest = [ret substringFromIndex:1];
+    
+	return [NSString stringWithFormat:@"%@%@", letter, rest];
 }
 
 + (NSString *)modelNamePlural {
@@ -28,10 +33,28 @@
     NSString *modelIdentifier = [self uniqueIdentifierName];
     if (!modelIdentifier) return nil;
     
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    
+    if ([[self class] isSubclassOfClass:[NSManagedObject class]]) {
+        RKManagedObjectStore *managedObjectStore = [RKManagedObjectStore defaultStore];
+        if (!managedObjectStore) return nil;
+        // TODO: Fix this
+        NSString *entityName = NSStringFromClass([self class]);
+        NSEntityDescription *entity = [[managedObjectStore.managedObjectModel entitiesByName] objectForKey:entityName];
+        
+        for (NSAttributeDescription *property in entity.properties) {
+            NSString *name = [property name];
+            if ([name isEqualToString:modelIdentifier]) {
+                [dict setObject:name forKey:@"id"];
+            } else {
+                [dict setObject:name forKey:[name underscore]];
+            }
+        }
+        return dict;
+    }
+    
     unsigned int count;
     objc_property_t *list = class_copyPropertyList([self class], &count);
-    
-    NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithCapacity:count];
     
     for (unsigned i = 0; i < count; i++) {
         NSString *name = [NSString stringWithUTF8String:property_getName(list[i])];
@@ -43,7 +66,6 @@
     }
     
     free(list);
-    
     
     return dict;
 }
@@ -63,7 +85,7 @@
         if (!mapping.identificationAttributes && [self uniqueIdentifierName]) {
             mapping.identificationAttributes = @[[self uniqueIdentifierName]];
         }
-        if (!mapping.attributeMappings && [self objectMappingDictionary]) {
+        if (mapping.attributeMappings.count == 0 && [self objectMappingDictionary]) {
             [mapping addAttributeMappingsFromDictionary:[self objectMappingDictionary]];
         }
         return mapping;
@@ -95,13 +117,29 @@
 }
 
 + (NSString *)uniqueIdentifierName {
-    NSString *itemIdSel = @"itemId";
-    if ([self instancesRespondToSelector:NSSelectorFromString(itemIdSel)]) {
-        return itemIdSel;
+    NSString *testProperty1 = @"itemId";
+    NSString *testProperty2 = [[self modelName] stringByAppendingString:@"Id"];
+
+    if ([[self class] isSubclassOfClass:[NSManagedObject class]]) {
+        RKManagedObjectStore *managedObjectStore = [RKManagedObjectStore defaultStore];
+        if (!managedObjectStore) return nil;
+        // TODO: Fix this
+        NSString *entityName = NSStringFromClass([self class]);
+        NSEntityDescription *entity = [[managedObjectStore.managedObjectModel entitiesByName] objectForKey:entityName];
+        
+        for (NSAttributeDescription *property in entity.properties) {
+            NSString *pName = [property name];
+            if ([pName isEqualToString:testProperty1] || [pName isEqualToString:testProperty2]) {
+                return pName;
+            }
+        }
     }
-    itemIdSel = [[self modelName] stringByAppendingString:@"Id"];
-    if ([self instancesRespondToSelector:NSSelectorFromString(itemIdSel)]) {
-        return itemIdSel;
+    
+    if ([self instancesRespondToSelector:NSSelectorFromString(testProperty1)]) {
+        return testProperty1;
+    }
+    if ([self instancesRespondToSelector:NSSelectorFromString(testProperty2)]) {
+        return testProperty2;
     }
     return nil;
 }
