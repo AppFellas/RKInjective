@@ -67,46 +67,59 @@
     [[self class] setupObjectRouteForClass:cls];
 }
 
-+ (void)addClassMethodsToClass:(Class)cls {
++ (void)addMethod:(struct objc_method_description)md asInstance:(BOOL)isInstance toClass:(Class)cls
+{
     Class stubObjClass = [RKInjectiveStubObject class];
+    
+    SEL selector = md.name;
+    char *signature = md.types;
+
+    Method method;
+    Class toCls;
+    NSString *addingTo = nil;
+    
+    if (isInstance) {
+        method = class_getInstanceMethod(stubObjClass, selector);
+        toCls = cls;
+        addingTo = @"Instance";
+    } else {
+        method = class_getClassMethod(stubObjClass, selector);
+        toCls = object_getClass(cls);
+        addingTo = @"Class";
+    }
+    
+    IMP implementation = method_getImplementation(method);
+    
+    // Then add it as default
+    if ([cls respondsToSelector:selector]) {
+        NSString *newSelectorStr = [@"rki_" stringByAppendingString:NSStringFromSelector(selector)];
+        selector = NSSelectorFromString(newSelectorStr);
+    }
+    
+    // Don't add if something is there
+    if (![cls respondsToSelector:selector]) {
+        NSLog(@"%@ [%@] adding: %@", NSStringFromClass(cls), addingTo, NSStringFromSelector(selector));
+        class_addMethod(toCls, selector, implementation, signature);
+    }
+}
+
++ (void)addMethodsToClass:(Class)cls asInstance:(BOOL)isInstance {
     Protocol *protocol = @protocol(RKInjectiveProtocol);
     
     unsigned int count;
-    struct objc_method_description *methods = protocol_copyMethodDescriptionList(protocol, NO, NO, &count);
-    for (unsigned i = 0; i < count; i++)
-    {
-        SEL selector = methods[i].name;
-        NSLog(@"[Class] checking: %@", NSStringFromSelector(selector));
-        if (![cls respondsToSelector:selector]) {
-            //addDefaultImplementation
-            Method method = class_getClassMethod(stubObjClass, selector);
-            char *signature = methods[i].types;
-            IMP implementation = method_getImplementation(method);
-            class_addMethod(object_getClass(cls), selector, implementation, signature);
-        }
+    struct objc_method_description *methods = protocol_copyMethodDescriptionList(protocol, NO, isInstance, &count);
+    for (unsigned i = 0; i < count; i++) {
+        [self addMethod:methods[i] asInstance:isInstance toClass:cls];
     }
     free(methods);
 }
 
++ (void)addClassMethodsToClass:(Class)cls {
+    [self addMethodsToClass:cls asInstance:NO];
+}
+
 + (void)addInstanceMethodsToClass:(Class)cls {
-    Class stubObjClass = [RKInjectiveStubObject class];
-    Protocol *protocol = @protocol(RKInjectiveProtocol);
-    
-    unsigned int count;
-    struct objc_method_description *methods = protocol_copyMethodDescriptionList(protocol, NO, YES, &count);
-    for (unsigned i = 0; i < count; i++)
-    {
-        SEL selector = methods[i].name;
-        NSLog(@"[Instance] checking: %@", NSStringFromSelector(selector));
-        if (![cls respondsToSelector:selector]) {
-            //addDefaultImplementation
-            Method method = class_getInstanceMethod(stubObjClass, selector);
-            char *signature = methods[i].types;
-            IMP implementation = method_getImplementation(method);
-            class_addMethod(cls, selector, implementation, signature);
-        }
-    }
-    free(methods);
+    [self addMethodsToClass:cls asInstance:YES];
 }
 
 + (void)registerClass:(Class)cls {
