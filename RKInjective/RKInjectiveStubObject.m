@@ -68,6 +68,25 @@
     return mapping;
 }
 
++ (NSString *)pathForRequestType:(RKIRequestType)requestType {
+    return nil;
+}
+
++ (NSString *)defaultPathForRequestType:(RKIRequestType)requestType {
+    NSString *path = nil;
+    switch (requestType) {
+        case RKIRequestGetObject: {
+            path = [[self modelNamePlural] stringByAppendingFormat:@"/:%@", [self uniqueIdentifierName]];
+            break;
+        }
+        default: {
+            path = [self modelNamePlural];
+            break;
+        }
+    }
+    return path;
+}
+
 + (NSString *)uniqueIdentifierName {
     NSString *itemIdSel = @"itemId";
     if ([self instancesRespondToSelector:NSSelectorFromString(itemIdSel)]) {
@@ -105,6 +124,5 @@
         failure(error);
     }];
 }
-
 
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4576E59116B80FB80014AD52 /* Record.m in Sources */ = {isa = PBXBuildFile; fileRef = 4576E59016B80FB80014AD52 /* Record.m */; };
 		5573FE2A16B92EDF004BFF9D /* ManagedObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5573FE2916B92EDF004BFF9D /* ManagedObjectTests.m */; };
 		5573FE2E16B93DF4004BFF9D /* RKTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5573FE2C16B93DF3004BFF9D /* RKTest.xcdatamodeld */; };
 		5579DFEE16B6AACC00ABC558 /* ArticleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5579DFED16B6AACC00ABC558 /* ArticleTests.m */; };
@@ -29,6 +30,8 @@
 
 /* Begin PBXFileReference section */
 		319D5C993292420E9B06B47F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		4576E58F16B80FB80014AD52 /* Record.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Record.h; sourceTree = "<group>"; };
+		4576E59016B80FB80014AD52 /* Record.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Record.m; sourceTree = "<group>"; };
 		5573FE2816B92EDF004BFF9D /* ManagedObjectTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagedObjectTests.h; sourceTree = "<group>"; };
 		5573FE2916B92EDF004BFF9D /* ManagedObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagedObjectTests.m; sourceTree = "<group>"; };
 		5573FE2D16B93DF4004BFF9D /* RKTest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RKTest.xcdatamodel; sourceTree = "<group>"; };
@@ -164,6 +167,8 @@
 				5591808816B6A92D002FA784 /* Article.m */,
 				5579E04E16B6E80800ABC558 /* ManagedObject.h */,
 				5579E04F16B6E80800ABC558 /* ManagedObject.m */,
+				4576E58F16B80FB80014AD52 /* Record.h */,
+				4576E59016B80FB80014AD52 /* Record.m */,
 				5573FE2C16B93DF3004BFF9D /* RKTest.xcdatamodeld */,
 			);
 			name = Models;
@@ -270,6 +275,7 @@
 				5579E00116B6ACDE00ABC558 /* RKInjective.m in Sources */,
 				5579E00416B6AD0F00ABC558 /* RKInjectiveStubObject.m in Sources */,
 				5579E05016B6E80800ABC558 /* ManagedObject.m in Sources */,
+				4576E59116B80FB80014AD52 /* Record.m in Sources */,
 				5573FE2A16B92EDF004BFF9D /* ManagedObjectTests.m in Sources */,
 				5573FE2E16B93DF4004BFF9D /* RKTest.xcdatamodeld in Sources */,
 			);
