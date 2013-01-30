@@ -16,5 +16,8 @@ pod 'RestKit/Testing', podspec: 'https://github.com/RestKit/RestKit/raw/developm
 pod 'Expecta'
 pod 'Nocilla', podspec: 'https://github.com/luisobo/Nocilla/raw/master/Nocilla.podspec'
 
+pod 'RestKit/Testing'
+pod 'TKSenTestAsync', :podspec => 'https://raw.github.com/xslim/TKSenTestAsync/master/TKSenTestAsync.podspec'
+
 # Social
 

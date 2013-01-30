@@ -23,6 +23,7 @@ PODS:
 - RestKit/Support (0.20.0pre6)
 - RestKit/Testing (0.20.0pre6)
 - SOCKit (1.1)
+- TKSenTestAsync (0.0.1)
 
 DEPENDENCIES:
 - Expecta
@@ -31,6 +32,7 @@ DEPENDENCIES:
 - Nocilla (from `https://github.com/luisobo/Nocilla/raw/master/Nocilla.podspec')
 - RestKit (from `https://github.com/RestKit/RestKit/raw/development/RestKit.podspec')
 - RestKit/Testing (from `https://github.com/RestKit/RestKit/raw/development/RestKit.podspec')
+- TKSenTestAsync (from `https://raw.github.com/xslim/TKSenTestAsync/master/TKSenTestAsync.podspec')
 
 EXTERNAL SOURCES:
   Nocilla:
@@ -39,6 +41,8 @@ EXTERNAL SOURCES:
     :podspec: https://github.com/RestKit/RestKit/raw/development/RestKit.podspec
   RestKit/Testing:
     :podspec: https://github.com/RestKit/RestKit/raw/development/RestKit.podspec
+  TKSenTestAsync:
+    :podspec: https://raw.github.com/xslim/TKSenTestAsync/master/TKSenTestAsync.podspec
 
 SPEC CHECKSUMS:
   AFNetworking: 761a418233d280c1e0580bcb76ff9cb4c3073d17
@@ -55,5 +59,6 @@ SPEC CHECKSUMS:
   RestKit/Support: 8f62889f7a186c2fd11e93413150906f6aef91d6
   RestKit/Testing: 8f62889f7a186c2fd11e93413150906f6aef91d6
   SOCKit: 179515c1a621dd5652a60e9be02ea4adcd25bc9b
+  TKSenTestAsync: 99e7e0a8d1485d61ec964d80a37ed82fa9ddc2b1
 
 COCOAPODS: 0.16.1
