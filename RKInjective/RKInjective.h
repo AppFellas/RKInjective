@@ -8,6 +8,11 @@
 
 #import <RestKit/RestKit.h>
 
+typedef enum {
+    RKIRequestGetObjects = 0,
+    RKIRequestGetObject
+} RKIRequestType;
+
 typedef void ( ^RKIObjectsSuccessBlock ) ( NSArray *objects );
 typedef void ( ^RKIObjectSuccessBlock ) ( id object );
 typedef void ( ^RKIFailureBlock ) (  NSError *error );
@@ -23,9 +28,12 @@ typedef void ( ^RKIFailureBlock ) (  NSError *error );
 + (RKObjectMapping *)objectMapping;
 + (NSDictionary *)objectMappingDictionary;
 + (NSString *)uniqueIdentifierName;
++ (NSString *)pathForRequestType:(RKIRequestType)requestType;
++ (NSString *)defaultPathForRequestType:(RKIRequestType)requestType;
 - (id)uniqueIdentifier;
 + (void)getObjectsOnSuccess:(RKIObjectsSuccessBlock)success failure:(RKIFailureBlock)failure;
 - (void)getObjectOnSuccess:(RKIObjectSuccessBlock)success failure:(RKIFailureBlock)failure;
+- (void)postObjectOnSuccess:(RKIObjectSuccessBlock)success failure:(RKIFailureBlock)failure;
 @end
 
 #define rkinjective_register(cls) \
