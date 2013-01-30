@@ -125,13 +125,4 @@
     }];
 }
 
-- (void)postObjectOnSuccess:(RKIObjectSuccessBlock)success failure:(RKIFailureBlock)failure {
-    [[RKObjectManager sharedManager] postObject:self path:nil parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        success([mappingResult firstObject]);
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        failure(error);
-    }];
-}
-
-
 @end

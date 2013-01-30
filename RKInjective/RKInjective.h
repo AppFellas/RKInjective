@@ -10,9 +10,7 @@
 
 typedef enum {
     RKIRequestGetObjects = 0,
-    RKIRequestGetObject,
-    RKIRequestPostObjects,
-    RKIRequestPostObject,
+    RKIRequestGetObject
 } RKIRequestType;
 
 typedef void ( ^RKIObjectsSuccessBlock ) ( NSArray *objects );
