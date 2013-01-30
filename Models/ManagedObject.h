@@ -10,4 +10,6 @@
 
 @interface ManagedObject : NSManagedObject <RKInjectiveProtocol>
 
+@property (nonatomic, strong) NSString *name;
+
 @end
