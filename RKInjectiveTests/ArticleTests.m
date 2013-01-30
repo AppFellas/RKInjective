@@ -11,7 +11,7 @@
 
 @implementation ArticleTests
 
-+(void)load {
++ (void)load {
     NSBundle *testTargetBundle = [NSBundle bundleWithIdentifier:@"com.AppFellas.RKInjectiveTests"];
     [RKTestFixture setFixtureBundle:testTargetBundle];
     
@@ -26,10 +26,6 @@
 - (void)tearDown {
     [[LSNocilla sharedInstance] clearStubs];
     [[LSNocilla sharedInstance] stop];
-}
-
-- (void)dealloc {
-    NSLog(@"YEP");
 }
 
 - (void)testModelName {
@@ -69,22 +65,17 @@
     stubRequest(@"GET", @"http://localhost/articles").andReturn(200).
     withHeaders(@{@"Content-Type": @"application/json"}).withBody(data);
     
-    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
-    
-    [Article getObjectsOnSuccess:^(NSArray *objects) {
-        STAssertNotNil(objects, @"Could not load objects");
-        expect(objects).toNot.beNil();
-        expect(objects.count).to.equal(3);
-        dispatch_semaphore_signal(semaphore);
-    } failure:^(NSError *error) {
-        STAssertNil(error, @"Should be no error on object loading");
-        dispatch_semaphore_signal(semaphore);
+    [self runTestWithBlock:^{
+        [Article getObjectsOnSuccess:^(NSArray *objects) {
+            STAssertNotNil(objects, @"Could not load objects");
+            expect(objects).toNot.beNil();
+            expect(objects.count).to.equal(3);
+            [self blockTestCompleted];
+        } failure:^(NSError *error) {
+            STAssertNil(error, @"Should be no error on object loading");
+            [self blockTestCompleted];
+        }];
     }];
-
-    while (dispatch_semaphore_wait(semaphore, DISPATCH_TIME_NOW))
-        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
-                                 beforeDate:[NSDate dateWithTimeIntervalSinceNow:10]];
-//    dispatch_release(semaphore);
 }
 
 - (void)testGetObject {
@@ -92,23 +83,18 @@
     stubRequest(@"GET", @"http://localhost/articles/10000").andReturn(200).
     withHeaders(@{@"Content-Type": @"application/json"}).withBody(data);
     
-    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
-    
-    Article *article = [Article new];
-    article.articleId = @"10000";
-    [article getObjectOnSuccess:^(id object) {
-        STAssertNotNil(object, @"Could not load objects");
-        expect(object).toNot.beNil();
-        dispatch_semaphore_signal(semaphore);
-    } failure:^(NSError *error) {
-        STAssertNil(error, @"Should be no error on object loading");
-        dispatch_semaphore_signal(semaphore);
+    [self runTestWithBlock:^{
+        Article *article = [Article new];
+        article.articleId = @"10000";
+        [article getObjectOnSuccess:^(id object) {
+            STAssertNotNil(object, @"Could not load objects");
+            expect(object).toNot.beNil();
+            [self blockTestCompleted];
+        } failure:^(NSError *error) {
+            STAssertNil(error, @"Should be no error on object loading");
+            [self blockTestCompleted];
+        }];
     }];
-    
-    while (dispatch_semaphore_wait(semaphore, DISPATCH_TIME_NOW))
-        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
-                                 beforeDate:[NSDate dateWithTimeIntervalSinceNow:10]];
-    //    dispatch_release(semaphore);
 }
 
 @end
