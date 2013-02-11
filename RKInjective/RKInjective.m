@@ -128,7 +128,7 @@
         assert(@"RKObject manager doesnt exist");
     }
     
-    if ( class_conformsToProtocol(cls, @protocol(RKInjectiveProtocol)) ) {
+    if ( [cls conformsToProtocol:@protocol(RKInjectiveProtocol)] ) {
         
         [[self class] addClassMethodsToClass:cls];
         [[self class] addInstanceMethodsToClass:cls];
