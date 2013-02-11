@@ -104,6 +104,7 @@
 + (NSString *)defaultPathForRequestType:(RKIRequestType)requestType {
     NSString *path = nil;
     switch (requestType) {
+        case RKIRequestDeleteObject:
         case RKIRequestGetObject: {
             path = [[self modelNamePlural] stringByAppendingFormat:@"/:%@", [self uniqueIdentifierName]];
             break;
@@ -169,6 +170,14 @@
 - (void)getObjectOnSuccess:(RKIObjectSuccessBlock)success failure:(RKIFailureBlock)failure {
     [[RKObjectManager sharedManager] getObject:self path:nil parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         success([mappingResult firstObject]);
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        failure(error);
+    }];
+}
+
+- (void)deleteObjectOnSuccess:(RKIBlock)success failure:(RKIFailureBlock)failure {
+    [[RKObjectManager sharedManager] deleteObject:self path:nil parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        success();
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         failure(error);
     }];

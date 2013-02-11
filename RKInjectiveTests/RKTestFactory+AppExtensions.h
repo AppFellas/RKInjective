@@ -11,5 +11,7 @@
 @interface RKTestFactory (AppExtensions)
 
 + (void)stubGetRequest:(NSString *)uri withFixture:(NSString *)fixtureName;
++ (void)stubDeleteRequest:(NSString *)uri withFixture:(NSString *)fixtureName;
++ (void)stubDeleteRequest:(NSString *)uri;
 
 @end

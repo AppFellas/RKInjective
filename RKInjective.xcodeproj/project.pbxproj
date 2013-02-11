@@ -31,6 +31,7 @@
 		5591806216B6A6BC002FA784 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5591806016B6A6BC002FA784 /* InfoPlist.strings */; };
 		5591808916B6A92D002FA784 /* Article.m in Sources */ = {isa = PBXBuildFile; fileRef = 5591808816B6A92D002FA784 /* Article.m */; };
 		E936F78E4F9E4479AFEAD4C8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF68E4B29A9F497983FFB80C /* libPods.a */; };
+		FAADAACE16C937CA00429434 /* empty.json in Resources */ = {isa = PBXBuildFile; fileRef = FAADAACD16C937CA00429434 /* empty.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +76,7 @@
 		5591808816B6A92D002FA784 /* Article.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Article.m; path = Models/Article.m; sourceTree = "<group>"; };
 		5591808A16B6A993002FA784 /* RKInjective-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RKInjective-Prefix.pch"; sourceTree = "<group>"; };
 		CF68E4B29A9F497983FFB80C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAADAACD16C937CA00429434 /* empty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = empty.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 			children = (
 				5579E01C16B6BFFE00ABC558 /* article.json */,
 				5579E04B16B6CE2C00ABC558 /* articles.json */,
+				FAADAACD16C937CA00429434 /* empty.json */,
 			);
 			path = Fixtures;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				5591806216B6A6BC002FA784 /* InfoPlist.strings in Resources */,
 				5579E01D16B6BFFE00ABC558 /* article.json in Resources */,
 				5579E04C16B6CE2C00ABC558 /* articles.json in Resources */,
+				FAADAACE16C937CA00429434 /* empty.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

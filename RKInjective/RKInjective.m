@@ -62,9 +62,21 @@
     [[[self class] sharedManager] addResponseDescriptor:descriptor];
 }
 
++ (void)setupDeleteRouteForClass:(Class)cls {
+    NSString *path = [cls pathForRequestType:RKIRequestDeleteObject];
+    if ( nil == path ) {
+        path = [cls defaultPathForRequestType:RKIRequestDeleteObject];
+    }
+    RKRoute *objectRoute = [RKRoute routeWithClass:cls
+                                       pathPattern:path
+                                            method:RKRequestMethodDELETE];
+    [[[self class] sharedRouterRouteSet] addRoute:objectRoute];
+}
+
 + (void)setupRoutesForClass:(Class)cls {
     [[self class] setupObjectsRouteForClass:cls];
     [[self class] setupObjectRouteForClass:cls];
+    [[self class] setupDeleteRouteForClass:cls];
 }
 
 + (void)addMethod:(struct objc_method_description)md asInstance:(BOOL)isInstance toClass:(Class)cls
