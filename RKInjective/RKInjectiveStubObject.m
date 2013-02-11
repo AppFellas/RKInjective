@@ -174,4 +174,12 @@
     }];
 }
 
+- (void)deleteObjectOnSuccess:(RKIBlock)success failure:(RKIFailureBlock)failure {
+    [[RKObjectManager sharedManager] deleteObject:self path:nil parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        success();
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        failure(error);
+    }];
+}
+
 @end

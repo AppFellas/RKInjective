@@ -16,6 +16,7 @@ typedef enum {
 typedef void ( ^RKIObjectsSuccessBlock ) ( NSArray *objects );
 typedef void ( ^RKIObjectSuccessBlock ) ( id object );
 typedef void ( ^RKIFailureBlock ) (  NSError *error );
+typedef void ( ^RKIBlock ) ( void );
 
 @interface RKInjective : NSObject 
 +(void)registerClass:(Class)cls;
@@ -34,6 +35,7 @@ typedef void ( ^RKIFailureBlock ) (  NSError *error );
 + (void)getObjectsOnSuccess:(RKIObjectsSuccessBlock)success failure:(RKIFailureBlock)failure;
 - (void)getObjectOnSuccess:(RKIObjectSuccessBlock)success failure:(RKIFailureBlock)failure;
 - (void)postObjectOnSuccess:(RKIObjectSuccessBlock)success failure:(RKIFailureBlock)failure;
+- (void)deleteObjectOnSuccess:(RKIBlock)success failure:(RKIFailureBlock)failure;
 @end
 
 #define rkinjective_register(cls) \
