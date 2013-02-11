@@ -63,9 +63,9 @@
 }
 
 + (void)setupDeleteRouteForClass:(Class)cls {
-    NSString *path = [cls pathForRequestType:RKIRequestGetObject];
+    NSString *path = [cls pathForRequestType:RKIRequestDeleteObject];
     if ( nil == path ) {
-        path = [cls defaultPathForRequestType:RKIRequestGetObject];
+        path = [cls defaultPathForRequestType:RKIRequestDeleteObject];
     }
     RKRoute *objectRoute = [RKRoute routeWithClass:cls
                                        pathPattern:path

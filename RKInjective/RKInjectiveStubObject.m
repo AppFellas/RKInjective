@@ -104,6 +104,7 @@
 + (NSString *)defaultPathForRequestType:(RKIRequestType)requestType {
     NSString *path = nil;
     switch (requestType) {
+        case RKIRequestDeleteObject:
         case RKIRequestGetObject: {
             path = [[self modelNamePlural] stringByAppendingFormat:@"/:%@", [self uniqueIdentifierName]];
             break;
