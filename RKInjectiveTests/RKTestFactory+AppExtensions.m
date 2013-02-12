@@ -74,4 +74,12 @@
     [RKTestFactory stubDeleteRequest:uri withFixture:@"empty"];
 }
 
++ (void)stubPostRequest:(NSString *)uri withFixture:(NSString *)fixtureName
+{
+    NSString *fileName = [fixtureName stringByAppendingPathExtension:@"json"];
+    NSString *data = [RKTestFixture stringWithContentsOfFixture:fileName];
+    stubRequest(@"POST", uri).andReturn(201).
+    withHeaders(@{@"Content-Type": @"application/json"}).withBody(data);
+}
+
 @end

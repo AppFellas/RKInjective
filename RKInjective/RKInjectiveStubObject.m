@@ -70,6 +70,16 @@
     return dict;
 }
 
++ (NSDictionary *)objectRequestMappingDictionary
+{
+    NSDictionary *mappincDict = [self objectMappingDictionary];
+    NSMutableDictionary *requestMapping = [NSMutableDictionary new];
+    for (NSString *key in [mappincDict allKeys]) {
+        requestMapping[mappincDict[key]] = key;
+    }
+    return requestMapping;
+}
+
 + (RKObjectMapping *)objectMapping {
     Class cls = [self class];
     
@@ -97,6 +107,12 @@
     return mapping;
 }
 
++ (RKObjectMapping *)requestMapping {
+    RKObjectMapping *mapping = [RKObjectMapping requestMapping];
+    [mapping addAttributeMappingsFromDictionary:[self objectRequestMappingDictionary]];
+    return mapping;
+}
+
 + (NSString *)pathForRequestType:(RKIRequestType)requestType {
     return nil;
 }
@@ -109,6 +125,7 @@
             path = [[self modelNamePlural] stringByAppendingFormat:@"/:%@", [self uniqueIdentifierName]];
             break;
         }
+        case RKIRequestPostObject:
         default: {
             path = [self modelNamePlural];
             break;
@@ -178,6 +195,15 @@
 - (void)deleteObjectOnSuccess:(RKIBlock)success failure:(RKIFailureBlock)failure {
     [[RKObjectManager sharedManager] deleteObject:self path:nil parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         success();
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        failure(error);
+    }];
+}
+
+- (void)postObjectOnSuccess:(RKIObjectSuccessBlock)success failure:(RKIFailureBlock)failure
+{
+    [[RKObjectManager sharedManager] postObject:self path:nil parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        success([mappingResult firstObject]);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         failure(error);
     }];

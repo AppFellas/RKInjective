@@ -74,4 +74,25 @@
     }];
 }
 
+- (void)testPostObject
+{
+    [RKTestFactory stubPostRequest:@"http://localhost/managedObjects" withFixture:@"managed_object"];
+    NSManagedObjectContext *moc = [RKManagedObjectStore defaultStore].persistentStoreManagedObjectContext;
+    ManagedObject *obj = [RKTestFactory insertManagedObjectForEntityForName:@"ManagedObject" inManagedObjectContext:moc withProperties:nil];
+    obj.title = @"RKInjective test";
+    
+    [self runTestWithBlock:^{
+        [obj postObjectOnSuccess:^(id object){
+            ManagedObject *managedObject = (ManagedObject *)object;
+            STAssertNotNil(object, @"Could not load object");
+            STAssertEquals(obj, object, @"Expected to match the ManagedObject, but did not");
+            expect(managedObject.itemId).notTo.beNil();
+            [self blockTestCompleted];
+        } failure:^(NSError *error){
+            expect(error).to.beNil();
+            [self blockTestCompleted];
+        }];
+    }];
+}
+
 @end

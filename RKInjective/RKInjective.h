@@ -11,7 +11,8 @@
 typedef enum {
     RKIRequestGetObjects = 0,
     RKIRequestGetObject,
-    RKIRequestDeleteObject
+    RKIRequestDeleteObject,
+    RKIRequestPostObject
 } RKIRequestType;
 
 typedef void ( ^RKIObjectsSuccessBlock ) ( NSArray *objects );
@@ -28,7 +29,9 @@ typedef void ( ^RKIBlock ) ( void );
 + (NSString *)modelName;
 + (NSString *)modelNamePlural;
 + (RKObjectMapping *)objectMapping;
++ (RKObjectMapping *)requestMapping;
 + (NSDictionary *)objectMappingDictionary;
++ (NSDictionary *)objectRequestMappingDictionary;
 + (NSString *)uniqueIdentifierName;
 + (NSString *)pathForRequestType:(RKIRequestType)requestType;
 + (NSString *)defaultPathForRequestType:(RKIRequestType)requestType;

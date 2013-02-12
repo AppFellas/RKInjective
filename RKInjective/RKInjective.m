@@ -73,10 +73,31 @@
     [[[self class] sharedRouterRouteSet] addRoute:objectRoute];
 }
 
++ (void)setupPostRouteForClass:(Class)cls
+{
+    NSString *path = [cls pathForRequestType:RKIRequestPostObject];
+    if ( nil == path ) {
+        path = [cls defaultPathForRequestType:RKIRequestPostObject];
+    }
+    RKRoute *objectRoute = [RKRoute routeWithClass:cls
+                                       pathPattern:path
+                                            method:RKRequestMethodPOST];
+    [[[self class] sharedRouterRouteSet] addRoute:objectRoute];
+    
+    RKObjectMapping *requestMapping = [cls requestMapping];
+    if (!requestMapping) return;
+    RKRequestDescriptor *descriptor = nil;
+    descriptor = [RKRequestDescriptor requestDescriptorWithMapping:requestMapping
+                                                       objectClass:cls
+                                                       rootKeyPath:nil];
+    [[[self class] sharedManager] addRequestDescriptor:descriptor];
+}
+
 + (void)setupRoutesForClass:(Class)cls {
     [[self class] setupObjectsRouteForClass:cls];
     [[self class] setupObjectRouteForClass:cls];
     [[self class] setupDeleteRouteForClass:cls];
+    [[self class] setupPostRouteForClass:cls];
 }
 
 + (void)addMethod:(struct objc_method_description)md asInstance:(BOOL)isInstance toClass:(Class)cls
