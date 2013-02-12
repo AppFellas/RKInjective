@@ -65,8 +65,35 @@
         [objectToDelete deleteObjectOnSuccess:^{
             //check we don't have it anymore
             NSArray *objects = [moc executeFetchRequest:request error:NULL];
-            expect(objects.count).to.equal(0);
+            expect(objects.count).to.equal(1);
             [self blockTestCompleted];
+        } failure:^(NSError *error){
+            expect(error).to.beNil();
+            [self blockTestCompleted];
+        }];
+    }];
+}
+
+- (void)testPostObject
+{
+    [RKTestFactory stubPostRequest:@"http://localhost/managedObjects"];
+    [RKTestFactory stubGetRequest:@"http://localhost/managedObjects" withFixture:@"articles"];
+    
+    [self runTestWithBlock:^{
+        NSDictionary *params = @{@"itemId" : @"1", @"title" : @"RestKit Unit Testing"};
+        [ManagedObject postObject:nil parameters:params success:^(id object){
+            [ManagedObject getObjectsOnSuccess:^(NSArray *objects){
+                NSManagedObjectContext *moc = [RKManagedObjectStore defaultStore].persistentStoreManagedObjectContext;
+                NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"ManagedObject"];
+                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"itemId == %@", @"1"];
+                [request setPredicate:predicate];
+                NSArray *objs = [moc executeFetchRequest:request error:NULL];
+                ManagedObject *object = [objs lastObject];
+                expect(object.title).to.equal(@"RestKit Unit Testing");
+                [self blockTestCompleted];
+            } failure:^(NSError *error){
+                [self blockTestCompleted];
+            }];
         } failure:^(NSError *error){
             expect(error).to.beNil();
             [self blockTestCompleted];
