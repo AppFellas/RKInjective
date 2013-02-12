@@ -83,12 +83,12 @@
     
     [self runTestWithBlock:^{
         [obj postObjectOnSuccess:^(id object){
+            ManagedObject *managedObject = (ManagedObject *)object;
             STAssertNotNil(object, @"Could not load object");
             STAssertEquals(obj, object, @"Expected to match the ManagedObject, but did not");
-            expect(((ManagedObject *)object).itemId).notTo.beNil();
+            expect(managedObject.itemId).notTo.beNil();
             [self blockTestCompleted];
         } failure:^(NSError *error){
-            NSLog(@"%@", error);
             expect(error).to.beNil();
             [self blockTestCompleted];
         }];

@@ -1,7 +1,4 @@
 {
     "id": "123",
-    "title": "RKInjective test",
-    "author": "Blake Watters",
-    "tags": ["RestKit", "testing", "tutorials"],
-    "created_at": "03/01/2012"
+    "title": "RKInjective test"
 }

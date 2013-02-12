@@ -82,9 +82,4 @@
     withHeaders(@{@"Content-Type": @"application/json"}).withBody(data);
 }
 
-+ (void)stubPostRequest:(NSString *)uri
-{
-    [RKTestFactory stubPostRequest:uri withFixture:@"empty"];
-}
-
 @end
