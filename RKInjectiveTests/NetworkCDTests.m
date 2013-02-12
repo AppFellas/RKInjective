@@ -65,7 +65,7 @@
         [objectToDelete deleteObjectOnSuccess:^{
             //check we don't have it anymore
             NSArray *objects = [moc executeFetchRequest:request error:NULL];
-            expect(objects.count).to.equal(1);
+            expect(objects.count).to.equal(0);
             [self blockTestCompleted];
         } failure:^(NSError *error){
             expect(error).to.beNil();
