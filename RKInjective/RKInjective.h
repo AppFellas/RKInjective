@@ -40,7 +40,6 @@ typedef void ( ^RKIBlock ) ( void );
 - (void)getObjectOnSuccess:(RKIObjectSuccessBlock)success failure:(RKIFailureBlock)failure;
 - (void)postObjectOnSuccess:(RKIObjectSuccessBlock)success failure:(RKIFailureBlock)failure;
 - (void)deleteObjectOnSuccess:(RKIBlock)success failure:(RKIFailureBlock)failure;
-+ (void)postObject:(id)object parameters:(NSDictionary *)params success:(RKIObjectSuccessBlock)success failure:(RKIFailureBlock)failure;
 @end
 
 #define rkinjective_register(cls) \

@@ -200,11 +200,9 @@
     }];
 }
 
-+ (void)postObject:(id)object parameters:(NSDictionary *)params success:(RKIObjectSuccessBlock)success failure:(RKIFailureBlock)failure
+- (void)postObjectOnSuccess:(RKIObjectSuccessBlock)success failure:(RKIFailureBlock)failure
 {
-    NSString *path = [self pathForRequestType:RKIRequestPostObject];
-    if (!path) path = [self defaultPathForRequestType:RKIRequestPostObject];
-    [[RKObjectManager sharedManager] postObject:object path:path parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    [[RKObjectManager sharedManager] postObject:self path:nil parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         success([mappingResult firstObject]);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         failure(error);
