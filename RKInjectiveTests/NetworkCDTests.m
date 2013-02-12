@@ -76,25 +76,19 @@
 
 - (void)testPostObject
 {
-    [RKTestFactory stubPostRequest:@"http://localhost/managedObjects"];
-    [RKTestFactory stubGetRequest:@"http://localhost/managedObjects" withFixture:@"articles"];
+    [RKTestFactory stubPostRequest:@"http://localhost/managedObjects" withFixture:@"managed_object"];
+    NSManagedObjectContext *moc = [RKManagedObjectStore defaultStore].persistentStoreManagedObjectContext;
+    ManagedObject *obj = [RKTestFactory insertManagedObjectForEntityForName:@"ManagedObject" inManagedObjectContext:moc withProperties:nil];
+    obj.title = @"RKInjective test";
     
     [self runTestWithBlock:^{
-        NSDictionary *params = @{@"itemId" : @"1", @"title" : @"RestKit Unit Testing"};
-        [ManagedObject postObject:nil parameters:params success:^(id object){
-            [ManagedObject getObjectsOnSuccess:^(NSArray *objects){
-                NSManagedObjectContext *moc = [RKManagedObjectStore defaultStore].persistentStoreManagedObjectContext;
-                NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"ManagedObject"];
-                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"itemId == %@", @"1"];
-                [request setPredicate:predicate];
-                NSArray *objs = [moc executeFetchRequest:request error:NULL];
-                ManagedObject *object = [objs lastObject];
-                expect(object.title).to.equal(@"RestKit Unit Testing");
-                [self blockTestCompleted];
-            } failure:^(NSError *error){
-                [self blockTestCompleted];
-            }];
+        [obj postObjectOnSuccess:^(id object){
+            STAssertNotNil(object, @"Could not load object");
+            STAssertEquals(obj, object, @"Expected to match the ManagedObject, but did not");
+            expect(((ManagedObject *)object).itemId).notTo.beNil();
+            [self blockTestCompleted];
         } failure:^(NSError *error){
+            NSLog(@"%@", error);
             expect(error).to.beNil();
             [self blockTestCompleted];
         }];
