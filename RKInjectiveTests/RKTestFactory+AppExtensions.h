@@ -13,5 +13,6 @@
 + (void)stubGetRequest:(NSString *)uri withFixture:(NSString *)fixtureName;
 + (void)stubDeleteRequest:(NSString *)uri withFixture:(NSString *)fixtureName;
 + (void)stubDeleteRequest:(NSString *)uri;
++ (void)stubPostRequest:(NSString *)uri withFixture:(NSString *)fixtureName;
 
 @end
