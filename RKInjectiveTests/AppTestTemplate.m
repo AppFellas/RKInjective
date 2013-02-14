@@ -18,6 +18,8 @@
     [RKInjective registerClass:[Article class]];
     [RKInjective registerClass:[Record class]];
     [RKInjective registerClass:[ManagedObject class]];
+    [RKInjective registerClass:[Book class]];
+    [RKInjective registerClass:[Author class]];
 }
 
 - (void)tearDown {
