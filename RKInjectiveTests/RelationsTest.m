@@ -8,6 +8,7 @@
 
 #import "RelationsTest.h"
 #import "Book.h"
+#import "Author.h"
 
 @implementation RelationsTest
 
@@ -15,6 +16,19 @@
 {
     NSDictionary *mappingDict = [Book objectMappingDictionary];
     expect(mappingDict[@"author"]).to.beNil();
+}
+
+- (void)testRelationsList
+{
+    NSArray *mappings = [Book objectRelationsMappings];
+    expect(mappings.count).to.equal(1);
+    RKRelationshipMapping *receivedMapping = [mappings lastObject];
+    
+    RKObjectMapping *authorMapping = [Author objectMapping];
+    RKRelationshipMapping *relationMapping = [RKRelationshipMapping relationshipMappingFromKeyPath:@"author"
+                                                                                         toKeyPath:@"author"
+                                                                                       withMapping:authorMapping];
+    STAssertTrue([receivedMapping isEqualToMapping:relationMapping], @"Author property mappings should be equal");
 }
 
 @end
