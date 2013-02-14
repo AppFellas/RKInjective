@@ -32,6 +32,9 @@
     [[[self class] sharedRouterRouteSet] addRoute:objectsRoute];
     RKObjectMapping *mapping = [cls objectMapping];
     if (!mapping) return;
+    NSArray *relationsMappings = [cls objectRelationsMappings];
+    if (relationsMappings) [mapping addPropertyMappingsFromArray:relationsMappings];
+    
     NSIndexSet *codes = RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful);
     
     RKResponseDescriptor *descriptor = nil;
@@ -53,6 +56,9 @@
     [[[self class] sharedRouterRouteSet] addRoute:objectRoute];
     RKObjectMapping *mapping = [cls objectMapping];
     if (!mapping) return;
+    NSArray *relationsMappings = [cls objectRelationsMappings];
+    if (relationsMappings) [mapping addPropertyMappingsFromArray:relationsMappings];
+    
     NSIndexSet *codes = RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful);
     RKResponseDescriptor *descriptor = nil;
     descriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping
