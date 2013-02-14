@@ -44,6 +44,9 @@
         
         for (NSAttributeDescription *property in entity.properties) {
             NSString *name = [property name];
+            
+            if ([property isKindOfClass:[NSRelationshipDescription class]]) continue;
+            
             if ([name isEqualToString:modelIdentifier]) {
                 [dict setObject:name forKey:@"id"];
             } else {
