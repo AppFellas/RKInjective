@@ -4,12 +4,24 @@
         <attribute name="articleId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Author" representedClassName="Author" syncable="YES">
+        <attribute name="authorId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="author" inverseEntity="Book" syncable="YES"/>
+    </entity>
+    <entity name="Book" representedClassName="Book" syncable="YES">
+        <attribute name="bookId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="author" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Author" inverseName="books" inverseEntity="Author" syncable="YES"/>
+    </entity>
     <entity name="ManagedObject" representedClassName="ManagedObject" syncable="YES">
         <attribute name="itemId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ManagedObject" positionX="160" positionY="192" width="128" height="75"/>
         <element name="Article" positionX="160" positionY="192" width="128" height="75"/>
+        <element name="ManagedObject" positionX="160" positionY="192" width="128" height="75"/>
+        <element name="Book" positionX="160" positionY="192" width="128" height="90"/>
+        <element name="Author" positionX="160" positionY="192" width="128" height="90"/>
     </elements>
 </model>
