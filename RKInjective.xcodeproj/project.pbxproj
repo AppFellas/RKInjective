@@ -34,6 +34,7 @@
 		FA8E8C2316CD0D3200330449 /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8E8C2216CD0D3100330449 /* Book.m */; };
 		FA8E8C2716CD0D3300330449 /* Author.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8E8C2616CD0D3300330449 /* Author.m */; };
 		FA8E8C2A16CD0DB300330449 /* RelationsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8E8C2916CD0DB200330449 /* RelationsTest.m */; };
+		FA8E8C4A16CD3E6300330449 /* books.json in Resources */ = {isa = PBXBuildFile; fileRef = FA8E8C4916CD3E6300330449 /* books.json */; };
 		FAADAACE16C937CA00429434 /* empty.json in Resources */ = {isa = PBXBuildFile; fileRef = FAADAACD16C937CA00429434 /* empty.json */; };
 		FAADAB2016CAE88000429434 /* managed_object.json in Resources */ = {isa = PBXBuildFile; fileRef = FAADAB1F16CAE88000429434 /* managed_object.json */; };
 /* End PBXBuildFile section */
@@ -86,6 +87,7 @@
 		FA8E8C2616CD0D3300330449 /* Author.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Author.m; path = Models/Author.m; sourceTree = "<group>"; };
 		FA8E8C2816CD0DB200330449 /* RelationsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RelationsTest.h; sourceTree = "<group>"; };
 		FA8E8C2916CD0DB200330449 /* RelationsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RelationsTest.m; sourceTree = "<group>"; };
+		FA8E8C4916CD3E6300330449 /* books.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = books.json; sourceTree = "<group>"; };
 		FAADAACD16C937CA00429434 /* empty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = empty.json; sourceTree = "<group>"; };
 		FAADAB1F16CAE88000429434 /* managed_object.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = managed_object.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -127,6 +129,7 @@
 				5579E04B16B6CE2C00ABC558 /* articles.json */,
 				FAADAACD16C937CA00429434 /* empty.json */,
 				FAADAB1F16CAE88000429434 /* managed_object.json */,
+				FA8E8C4916CD3E6300330449 /* books.json */,
 			);
 			path = Fixtures;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				5579E04C16B6CE2C00ABC558 /* articles.json in Resources */,
 				FAADAACE16C937CA00429434 /* empty.json in Resources */,
 				FAADAB2016CAE88000429434 /* managed_object.json in Resources */,
+				FA8E8C4A16CD3E6300330449 /* books.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
