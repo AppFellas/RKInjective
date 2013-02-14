@@ -32,6 +32,7 @@ typedef void ( ^RKIBlock ) ( void );
 + (RKObjectMapping *)requestMapping;
 + (NSDictionary *)objectMappingDictionary;
 + (NSDictionary *)objectRequestMappingDictionary;
++ (NSArray *)objectRelationsMappings;
 + (NSString *)uniqueIdentifierName;
 + (NSString *)pathForRequestType:(RKIRequestType)requestType;
 + (NSString *)defaultPathForRequestType:(RKIRequestType)requestType;

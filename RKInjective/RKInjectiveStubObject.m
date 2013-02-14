@@ -110,6 +110,31 @@
     return mapping;
 }
 
++ (NSArray *)objectRelationsMappings
+{
+    RKManagedObjectStore *managedObjectStore = [RKManagedObjectStore defaultStore];
+    if (!managedObjectStore) return nil;
+    NSString *entityName = NSStringFromClass([self class]);
+    NSEntityDescription *entity = [[managedObjectStore.managedObjectModel entitiesByName] objectForKey:entityName];
+    NSDictionary *relationsDict = entity.relationshipsByName;
+    
+    NSMutableArray *mappings = [NSMutableArray new];
+    
+    for (NSString *key in [relationsDict allKeys]) {
+        NSRelationshipDescription *relationDescription = relationsDict[key];
+        NSString *destination = relationDescription.destinationEntity.name;
+        Class dstClass = NSClassFromString(destination);
+        if (![dstClass conformsToProtocol:@protocol(RKInjectiveProtocol)]) continue;
+        RKObjectMapping *relMapping = [dstClass objectMapping];
+        RKRelationshipMapping *relationMapping = [RKRelationshipMapping relationshipMappingFromKeyPath:key
+                                                                                             toKeyPath:key
+                                                                                           withMapping:relMapping];
+        [mappings addObject:relationMapping];
+    }
+    
+    return mappings;
+}
+
 + (RKObjectMapping *)requestMapping {
     RKObjectMapping *mapping = [RKObjectMapping requestMapping];
     [mapping addAttributeMappingsFromDictionary:[self objectRequestMappingDictionary]];
