@@ -9,11 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class Author;
 
 @interface Book : NSManagedObject <RKInjectiveProtocol>
 
 @property (nonatomic, retain) NSString * bookId;
 @property (nonatomic, retain) NSString * title;
-@property (nonatomic, retain) NSManagedObject *author;
+@property (nonatomic, retain) Author *author;
 
 @end
