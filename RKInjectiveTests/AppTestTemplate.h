@@ -10,6 +10,8 @@
 #import "Article.h"
 #import "Record.h"
 #import "ManagedObject.h"
+#import "Author.h"
+#import "Book.h"
 
 
 @interface AppTestTemplate : SenTestCase

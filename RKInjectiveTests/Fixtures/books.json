@@ -1,0 +1,29 @@
+[
+    {
+        "id":1,
+        "title": "The Da Vinchi Code",
+        "author":
+        {
+            "id": 1,
+            "name": "Dan Brown"
+        }
+    },
+    {
+        "id":2,
+        "title": "Harry Potter",
+        "author":
+        {
+            "id": 2,
+            "name": "J. K. Rowling"
+        }
+    },
+    {
+        "id":3,
+        "title": "Angels and Demons",
+        "author":
+        {
+            "id": 1,
+            "name": "Dan Brown"
+        }
+    }
+]
