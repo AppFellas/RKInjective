@@ -82,4 +82,18 @@
     withHeaders(@{@"Content-Type": @"application/json"}).withBody(data);
 }
 
++ (void)stubPutRequest:(NSString *)uri withFixture:(NSString *)fixtureName {
+    NSString *fileName = [fixtureName stringByAppendingPathExtension:@"json"];
+    NSString *data = [RKTestFixture stringWithContentsOfFixture:fileName];
+    stubRequest(@"PUT", uri).andReturn(200).
+    withHeaders(@{@"Content-Type": @"application/json"}).withBody(data);
+}
+
++ (void)stubPatchRequest:(NSString *)uri withFixture:(NSString *)fixtureName {
+    NSString *fileName = [fixtureName stringByAppendingPathExtension:@"json"];
+    NSString *data = [RKTestFixture stringWithContentsOfFixture:fileName];
+    stubRequest(@"PATCH", uri).andReturn(200).
+    withHeaders(@{@"Content-Type": @"application/json"}).withBody(data);
+}
+
 @end
