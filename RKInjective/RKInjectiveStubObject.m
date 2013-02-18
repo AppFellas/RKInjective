@@ -148,6 +148,8 @@
 + (NSString *)defaultPathForRequestType:(RKIRequestType)requestType {
     NSString *path = nil;
     switch (requestType) {
+        case RKIRequestPatchObject:
+        case RKIRequestPutObject:
         case RKIRequestDeleteObject:
         case RKIRequestGetObject: {
             path = [[self modelNamePlural] stringByAppendingFormat:@"/:%@", [self uniqueIdentifierName]];
@@ -228,9 +230,24 @@
     }];
 }
 
-- (void)postObjectOnSuccess:(RKIObjectSuccessBlock)success failure:(RKIFailureBlock)failure
-{
+- (void)postObjectOnSuccess:(RKIObjectSuccessBlock)success failure:(RKIFailureBlock)failure {
     [[RKObjectManager sharedManager] postObject:self path:nil parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        success([mappingResult firstObject]);
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        failure(error);
+    }];
+}
+
+- (void)putObjectOnSuccess:(RKIObjectSuccessBlock)success failure:(RKIFailureBlock)failure {
+    [[RKObjectManager sharedManager] putObject:self path:nil parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        success([mappingResult firstObject]);
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        failure(error);
+    }];
+}
+
+- (void)patchObjectOnSuccess:(RKIObjectSuccessBlock)success failure:(RKIFailureBlock)failure {
+    [[RKObjectManager sharedManager] patchObject:self path:nil parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult){
         success([mappingResult firstObject]);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         failure(error);

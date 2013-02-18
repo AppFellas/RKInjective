@@ -95,4 +95,70 @@
     }];
 }
 
+- (void)testPutObject
+{
+    [RKTestFactory stubGetRequest:@"http://localhost/managedObjects" withFixture:@"articles"];
+    [RKTestFactory stubPutRequest:@"http://localhost/managedObjects/1" withFixture:@"article_edited"];
+    
+    NSManagedObjectContext *moc = [RKManagedObjectStore defaultStore].persistentStoreManagedObjectContext;
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"ManagedObject"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"itemId == %@", @"1"];
+    [request setPredicate:predicate];
+    
+    [self runTestWithBlock:^{
+        [ManagedObject getObjectsOnSuccess:^(NSArray *objects){
+            expect(objects.count).to.equal(3);
+            NSArray *objs = [moc executeFetchRequest:request error:NULL];
+            ManagedObject *managedObject = [objs lastObject];
+            NSString *newTitle = @"Edited title";
+            managedObject.title = newTitle;
+            [managedObject putObjectOnSuccess:^(id object){
+                ManagedObject *editedObject = (ManagedObject *)object;
+                expect(editedObject.itemId).to.equal(managedObject.itemId);
+                expect(editedObject.title).to.equal(newTitle);
+                [self blockTestCompleted];
+            } failure:^(NSError *error){
+                expect(error).to.beNil();
+                [self blockTestCompleted];
+            }];
+        } failure:^(NSError *error){
+            expect(error).to.beNil();
+            [self blockTestCompleted];
+        }];
+    }];
+}
+
+- (void)testPatchObject
+{
+    [RKTestFactory stubGetRequest:@"http://localhost/managedObjects" withFixture:@"articles"];
+    [RKTestFactory stubPatchRequest:@"http://localhost/managedObjects/1" withFixture:@"article_edited"];
+    
+    NSManagedObjectContext *moc = [RKManagedObjectStore defaultStore].persistentStoreManagedObjectContext;
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"ManagedObject"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"itemId == %@", @"1"];
+    [request setPredicate:predicate];
+    
+    [self runTestWithBlock:^{
+        [ManagedObject getObjectsOnSuccess:^(NSArray *objects){
+            expect(objects.count).to.equal(3);
+            NSArray *objs = [moc executeFetchRequest:request error:NULL];
+            ManagedObject *managedObject = [objs lastObject];
+            NSString *newTitle = @"Edited title";
+            managedObject.title = newTitle;
+            [managedObject patchObjectOnSuccess:^(id object){
+                ManagedObject *editedObject = (ManagedObject *)object;
+                expect(editedObject.itemId).to.equal(managedObject.itemId);
+                expect(editedObject.title).to.equal(newTitle);
+                [self blockTestCompleted];
+            } failure:^(NSError *error){
+                expect(error).to.beNil();
+                [self blockTestCompleted];
+            }];
+        } failure:^(NSError *error){
+            expect(error).to.beNil();
+            [self blockTestCompleted];
+        }];
+    }];
+}
+
 @end

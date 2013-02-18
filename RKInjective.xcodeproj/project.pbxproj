@@ -31,6 +31,7 @@
 		5591806216B6A6BC002FA784 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5591806016B6A6BC002FA784 /* InfoPlist.strings */; };
 		5591808916B6A92D002FA784 /* Article.m in Sources */ = {isa = PBXBuildFile; fileRef = 5591808816B6A92D002FA784 /* Article.m */; };
 		E936F78E4F9E4479AFEAD4C8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF68E4B29A9F497983FFB80C /* libPods.a */; };
+		FA0CE55F16D189E400BA17AC /* article_edited.json in Resources */ = {isa = PBXBuildFile; fileRef = FA0CE55E16D189E400BA17AC /* article_edited.json */; };
 		FA8E8C2316CD0D3200330449 /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8E8C2216CD0D3100330449 /* Book.m */; };
 		FA8E8C2716CD0D3300330449 /* Author.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8E8C2616CD0D3300330449 /* Author.m */; };
 		FA8E8C2A16CD0DB300330449 /* RelationsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8E8C2916CD0DB200330449 /* RelationsTest.m */; };
@@ -81,6 +82,7 @@
 		5591808816B6A92D002FA784 /* Article.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Article.m; path = Models/Article.m; sourceTree = "<group>"; };
 		5591808A16B6A993002FA784 /* RKInjective-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RKInjective-Prefix.pch"; sourceTree = "<group>"; };
 		CF68E4B29A9F497983FFB80C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA0CE55E16D189E400BA17AC /* article_edited.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = article_edited.json; sourceTree = "<group>"; };
 		FA8E8C2116CD0D3100330449 /* Book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Book.h; path = Models/Book.h; sourceTree = "<group>"; };
 		FA8E8C2216CD0D3100330449 /* Book.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Book.m; path = Models/Book.m; sourceTree = "<group>"; };
 		FA8E8C2516CD0D3200330449 /* Author.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Author.h; path = Models/Author.h; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				FAADAACD16C937CA00429434 /* empty.json */,
 				FAADAB1F16CAE88000429434 /* managed_object.json */,
 				FA8E8C4916CD3E6300330449 /* books.json */,
+				FA0CE55E16D189E400BA17AC /* article_edited.json */,
 			);
 			path = Fixtures;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				FAADAACE16C937CA00429434 /* empty.json in Resources */,
 				FAADAB2016CAE88000429434 /* managed_object.json in Resources */,
 				FA8E8C4A16CD3E6300330449 /* books.json in Resources */,
+				FA0CE55F16D189E400BA17AC /* article_edited.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
