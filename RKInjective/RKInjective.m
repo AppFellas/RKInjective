@@ -79,8 +79,7 @@
     [[[self class] sharedRouterRouteSet] addRoute:objectRoute];
 }
 
-+ (void)setupPostRouteForClass:(Class)cls
-{
++ (void)setupPostRouteForClass:(Class)cls {
     NSString *path = [cls pathForRequestType:RKIRequestPostObject];
     if ( nil == path ) {
         path = [cls defaultPathForRequestType:RKIRequestPostObject];
@@ -99,11 +98,35 @@
     [[[self class] sharedManager] addRequestDescriptor:descriptor];
 }
 
++ (void)setupPutRouteForClass:(Class)cls {
+    NSString *path = [cls pathForRequestType:RKIRequestPutObject];
+    if ( nil == path ) {
+        path = [cls defaultPathForRequestType:RKIRequestPutObject];
+    }
+    RKRoute *objectRoute = [RKRoute routeWithClass:cls
+                                       pathPattern:path
+                                            method:RKRequestMethodPUT];
+    [[[self class] sharedRouterRouteSet] addRoute:objectRoute];
+}
+
++ (void)setupPatchRouteForClass:(Class)cls {
+    NSString *path = [cls pathForRequestType:RKIRequestPatchObject];
+    if ( nil == path ) {
+        path = [cls defaultPathForRequestType:RKIRequestPatchObject];
+    }
+    RKRoute *objectRoute = [RKRoute routeWithClass:cls
+                                       pathPattern:path
+                                            method:RKRequestMethodPATCH];
+    [[[self class] sharedRouterRouteSet] addRoute:objectRoute];
+}
+
 + (void)setupRoutesForClass:(Class)cls {
     [[self class] setupObjectsRouteForClass:cls];
     [[self class] setupObjectRouteForClass:cls];
     [[self class] setupDeleteRouteForClass:cls];
     [[self class] setupPostRouteForClass:cls];
+    [[self class] setupPutRouteForClass:cls];
+    [[self class] setupPatchRouteForClass:cls];
 }
 
 + (void)addMethod:(struct objc_method_description)md asInstance:(BOOL)isInstance toClass:(Class)cls

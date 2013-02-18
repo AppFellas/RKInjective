@@ -12,7 +12,9 @@ typedef enum {
     RKIRequestGetObjects = 0,
     RKIRequestGetObject,
     RKIRequestDeleteObject,
-    RKIRequestPostObject
+    RKIRequestPostObject,
+    RKIRequestPutObject,
+    RKIRequestPatchObject
 } RKIRequestType;
 
 typedef void ( ^RKIObjectsSuccessBlock ) ( NSArray *objects );
@@ -41,6 +43,8 @@ typedef void ( ^RKIBlock ) ( void );
 - (void)getObjectOnSuccess:(RKIObjectSuccessBlock)success failure:(RKIFailureBlock)failure;
 - (void)postObjectOnSuccess:(RKIObjectSuccessBlock)success failure:(RKIFailureBlock)failure;
 - (void)deleteObjectOnSuccess:(RKIBlock)success failure:(RKIFailureBlock)failure;
+- (void)putObjectOnSuccess:(RKIObjectSuccessBlock)success failure:(RKIFailureBlock)failure;
+- (void)patchObjectOnSuccess:(RKIObjectSuccessBlock)success failure:(RKIFailureBlock)failure;
 @end
 
 #define rkinjective_register(cls) \
