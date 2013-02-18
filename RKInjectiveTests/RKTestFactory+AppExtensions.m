@@ -55,45 +55,35 @@
 	}];
 }
 
-+ (void)stubGetRequest:(NSString *)uri withFixture:(NSString *)fixtureName {
-    NSString *fileName = [fixtureName stringByAppendingPathExtension:@"json"];
++ (void)stubRequestType:(NSString *)type uri:(NSString *)uri returnCode:(NSUInteger)code fixture:(NSString *)fixture {
+    NSString *fileName = [fixture stringByAppendingPathExtension:@"json"];
     NSString *data = [RKTestFixture stringWithContentsOfFixture:fileName];
-    stubRequest(@"GET", uri).andReturn(200).
+    stubRequest(type, uri).andReturn(code).
     withHeaders(@{@"Content-Type": @"application/json"}).withBody(data);
+}
+
++ (void)stubGetRequest:(NSString *)uri withFixture:(NSString *)fixtureName {
+    [self stubRequestType:@"GET" uri:uri returnCode:200 fixture:fixtureName];
 }
 
 + (void)stubDeleteRequest:(NSString *)uri withFixture:(NSString *)fixtureName {
-    NSString *fileName = [fixtureName stringByAppendingPathExtension:@"json"];
-    NSString *data = [RKTestFixture stringWithContentsOfFixture:fileName];
-    stubRequest(@"DELETE", uri).andReturn(200).
-    withHeaders(@{@"Content-Type": @"application/json"}).withBody(data);
+    [self stubRequestType:@"DELETE" uri:uri returnCode:200 fixture:fixtureName];
 }
 
-+ (void)stubDeleteRequest:(NSString *)uri
-{
++ (void)stubDeleteRequest:(NSString *)uri {
     [RKTestFactory stubDeleteRequest:uri withFixture:@"empty"];
 }
 
-+ (void)stubPostRequest:(NSString *)uri withFixture:(NSString *)fixtureName
-{
-    NSString *fileName = [fixtureName stringByAppendingPathExtension:@"json"];
-    NSString *data = [RKTestFixture stringWithContentsOfFixture:fileName];
-    stubRequest(@"POST", uri).andReturn(201).
-    withHeaders(@{@"Content-Type": @"application/json"}).withBody(data);
++ (void)stubPostRequest:(NSString *)uri withFixture:(NSString *)fixtureName {
+    [self stubRequestType:@"POST" uri:uri returnCode:201 fixture:fixtureName];
 }
 
 + (void)stubPutRequest:(NSString *)uri withFixture:(NSString *)fixtureName {
-    NSString *fileName = [fixtureName stringByAppendingPathExtension:@"json"];
-    NSString *data = [RKTestFixture stringWithContentsOfFixture:fileName];
-    stubRequest(@"PUT", uri).andReturn(200).
-    withHeaders(@{@"Content-Type": @"application/json"}).withBody(data);
+    [self stubRequestType:@"PUT" uri:uri returnCode:200 fixture:fixtureName];
 }
 
 + (void)stubPatchRequest:(NSString *)uri withFixture:(NSString *)fixtureName {
-    NSString *fileName = [fixtureName stringByAppendingPathExtension:@"json"];
-    NSString *data = [RKTestFixture stringWithContentsOfFixture:fileName];
-    stubRequest(@"PATCH", uri).andReturn(200).
-    withHeaders(@{@"Content-Type": @"application/json"}).withBody(data);
+    [self stubRequestType:@"PATCH" uri:uri returnCode:200 fixture:fixtureName];
 }
 
 @end
