@@ -7,7 +7,7 @@
 //
 
 #import <objc/runtime.h>
-#import <RestKit/CoreData.h>
+#import <objc/message.h>
 #import "RKInjectiveStubObject.h"
 #import "NSString+Inflections.h"
 
@@ -17,8 +17,8 @@
 + (NSString *)modelName {
     // TODO: Fix for CoreData
     NSString *ret = NSStringFromClass([self class]);
-    unichar l = [ret characterAtIndex:0];
-	NSString *letter = [[NSString stringWithCharacters:&l length:1] lowercaseString];
+    unichar capitalLetter = [ret characterAtIndex:0];
+	NSString *letter = [[NSString stringWithCharacters:&capitalLetter length:1] lowercaseString];
 	NSString *rest = [ret substringFromIndex:1];
     
 	return [NSString stringWithFormat:@"%@%@", letter, rest];
@@ -37,10 +37,19 @@
     
     if ([[self class] isSubclassOfClass:[NSManagedObject class]]) {
         RKManagedObjectStore *managedObjectStore = [RKManagedObjectStore defaultStore];
-        if (!managedObjectStore) return nil;
+        if (!managedObjectStore) {
+            return nil;
+        }
         // TODO: Fix this
         NSString *entityName = NSStringFromClass([self class]);
-        NSEntityDescription *entity = [[managedObjectStore.managedObjectModel entitiesByName] objectForKey:entityName];
+        NSDictionary *entities = [managedObjectStore.managedObjectModel entitiesByName];
+        if ( nil == entities || 0 == [entities count] ) {
+            return nil;
+        }
+        NSEntityDescription *entity = [entities objectForKey:entityName];
+        if ( nil == entity ) {
+            return nil;
+        }
         
         for (NSAttributeDescription *property in entity.properties) {
             NSString *name = [property name];
@@ -73,8 +82,7 @@
     return dict;
 }
 
-+ (NSDictionary *)objectRequestMappingDictionary
-{
++ (NSDictionary *)objectRequestMappingDictionary {
     NSDictionary *mappincDict = [self objectMappingDictionary];
     NSMutableDictionary *requestMapping = [NSMutableDictionary new];
     for (NSString *key in [mappincDict allKeys]) {
@@ -110,8 +118,7 @@
     return mapping;
 }
 
-+ (NSArray *)objectRelationsMappings
-{
++ (NSArray *)objectRelationsMappings {
     RKManagedObjectStore *managedObjectStore = [RKManagedObjectStore defaultStore];
     if (!managedObjectStore) return nil;
     NSString *entityName = NSStringFromClass([self class]);
@@ -196,10 +203,7 @@
     NSString *_uniqueIdentifier = [[self class] uniqueIdentifierName];
     SEL _getUniqueIdentifier = NSSelectorFromString(_uniqueIdentifier);
     if ([self respondsToSelector:_getUniqueIdentifier]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-        id _uniqueIdentifier =  [self performSelector:_getUniqueIdentifier];
-#pragma clang diagnostic pop
+        id _uniqueIdentifier = objc_msgSend(self, _getUniqueIdentifier);
         return _uniqueIdentifier;
     }
     return nil;
