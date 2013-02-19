@@ -129,8 +129,7 @@
     [[self class] setupPatchRouteForClass:cls];
 }
 
-+ (void)addMethod:(struct objc_method_description)md asInstance:(BOOL)isInstance toClass:(Class)cls
-{
++ (void)addMethod:(struct objc_method_description)md asInstance:(BOOL)isInstance toClass:(Class)cls {
     Class stubObjClass = [RKInjectiveStubObject class];
     
     SEL selector = md.name;
@@ -152,15 +151,18 @@
     
     IMP implementation = method_getImplementation(method);
     
+    NSString *selectorStr = nil;
     // Then add it as default
     if ([cls respondsToSelector:selector]) {
-        NSString *newSelectorStr = [@"rki_" stringByAppendingString:NSStringFromSelector(selector)];
+        selectorStr = NSStringFromSelector(selector);
+        NSString *newSelectorStr = [@"rki_" stringByAppendingString:selectorStr];
         selector = NSSelectorFromString(newSelectorStr);
     }
     
     // Don't add if something is there
     if (![cls respondsToSelector:selector]) {
-        NSLog(@"%@ [%@] adding: %@", NSStringFromClass(cls), addingTo, NSStringFromSelector(selector));
+        selectorStr = NSStringFromSelector(selector);
+        NSLog(@"%@ [%@] adding: %@", NSStringFromClass(cls), addingTo, selectorStr);
         class_addMethod(toCls, selector, implementation, signature);
     }
 }
@@ -169,8 +171,12 @@
     Protocol *protocol = @protocol(RKInjectiveProtocol);
     
     unsigned int count;
-    struct objc_method_description *methods = protocol_copyMethodDescriptionList(protocol, NO, isInstance, &count);
-    for (unsigned i = 0; i < count; i++) {
+    struct objc_method_description *methods = NULL;
+    methods = protocol_copyMethodDescriptionList(protocol,
+                                                 NO,
+                                                 isInstance,
+                                                 &count);
+    for (unsigned int i = 0; i < count; i++) {
         [self addMethod:methods[i] asInstance:isInstance toClass:cls];
     }
     free(methods);
@@ -194,9 +200,6 @@
         
         [[self class] addClassMethodsToClass:cls];
         [[self class] addInstanceMethodsToClass:cls];
-        
-        
-        //[RKInjective setupMappingForClass:cls];
         [RKInjective setupRoutesForClass:cls];
 
     }
