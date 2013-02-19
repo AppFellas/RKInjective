@@ -129,9 +129,7 @@
     [[self class] setupPatchRouteForClass:cls];
 }
 
-+ (void)addMethod:(struct objc_method_description)md
-       asInstance:(BOOL)isInstance
-          toClass:(Class)cls {
++ (void)addMethod:(struct objc_method_description)md asInstance:(BOOL)isInstance toClass:(Class)cls {
     Class stubObjClass = [RKInjectiveStubObject class];
     
     SEL selector = md.name;
@@ -169,8 +167,7 @@
     }
 }
 
-+ (void)addMethodsToClass:(Class)cls
-               asInstance:(BOOL)isInstance {
++ (void)addMethodsToClass:(Class)cls asInstance:(BOOL)isInstance {
     Protocol *protocol = @protocol(RKInjectiveProtocol);
     
     unsigned int count;
@@ -203,9 +200,6 @@
         
         [[self class] addClassMethodsToClass:cls];
         [[self class] addInstanceMethodsToClass:cls];
-        
-        
-        //[RKInjective setupMappingForClass:cls];
         [RKInjective setupRoutesForClass:cls];
 
     }

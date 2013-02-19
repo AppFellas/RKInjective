@@ -17,8 +17,8 @@
 + (NSString *)modelName {
     // TODO: Fix for CoreData
     NSString *ret = NSStringFromClass([self class]);
-    unichar l = [ret characterAtIndex:0];
-	NSString *letter = [[NSString stringWithCharacters:&l length:1] lowercaseString];
+    unichar capitalLetter = [ret characterAtIndex:0];
+	NSString *letter = [[NSString stringWithCharacters:&capitalLetter length:1] lowercaseString];
 	NSString *rest = [ret substringFromIndex:1];
     
 	return [NSString stringWithFormat:@"%@%@", letter, rest];
@@ -37,10 +37,19 @@
     
     if ([[self class] isSubclassOfClass:[NSManagedObject class]]) {
         RKManagedObjectStore *managedObjectStore = [RKManagedObjectStore defaultStore];
-        if (!managedObjectStore) return nil;
+        if (!managedObjectStore) {
+            return nil;
+        }
         // TODO: Fix this
         NSString *entityName = NSStringFromClass([self class]);
-        NSEntityDescription *entity = [[managedObjectStore.managedObjectModel entitiesByName] objectForKey:entityName];
+        NSDictionary *entities = [managedObjectStore.managedObjectModel entitiesByName];
+        if ( nil == entities || 0 == [entities count] ) {
+            return nil;
+        }
+        NSEntityDescription *entity = [entities objectForKey:entityName];
+        if ( nil == entity ) {
+            return nil;
+        }
         
         for (NSAttributeDescription *property in entity.properties) {
             NSString *name = [property name];
@@ -200,8 +209,7 @@
     return nil;
 }
 
-+ (void)getObjectsOnSuccess:(RKIObjectsSuccessBlock)success
-                    failure:(RKIFailureBlock)failure {
++ (void)getObjectsOnSuccess:(RKIObjectsSuccessBlock)success failure:(RKIFailureBlock)failure {
     NSString *routeName = [self modelNamePlural];
     [[RKObjectManager sharedManager] getObjectsAtPathForRouteNamed:routeName object:nil parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         success([mappingResult array]);
@@ -210,8 +218,7 @@
     }];
 }
 
-- (void)getObjectOnSuccess:(RKIObjectSuccessBlock)success
-                   failure:(RKIFailureBlock)failure {
+- (void)getObjectOnSuccess:(RKIObjectSuccessBlock)success failure:(RKIFailureBlock)failure {
     [[RKObjectManager sharedManager] getObject:self path:nil parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         success([mappingResult firstObject]);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -219,8 +226,7 @@
     }];
 }
 
-- (void)deleteObjectOnSuccess:(RKIBlock)success
-                      failure:(RKIFailureBlock)failure {
+- (void)deleteObjectOnSuccess:(RKIBlock)success failure:(RKIFailureBlock)failure {
     [[RKObjectManager sharedManager] deleteObject:self path:nil parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         success();
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -228,8 +234,7 @@
     }];
 }
 
-- (void)postObjectOnSuccess:(RKIObjectSuccessBlock)success
-                    failure:(RKIFailureBlock)failure {
+- (void)postObjectOnSuccess:(RKIObjectSuccessBlock)success failure:(RKIFailureBlock)failure {
     [[RKObjectManager sharedManager] postObject:self path:nil parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         success([mappingResult firstObject]);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -237,8 +242,7 @@
     }];
 }
 
-- (void)putObjectOnSuccess:(RKIObjectSuccessBlock)success
-                   failure:(RKIFailureBlock)failure {
+- (void)putObjectOnSuccess:(RKIObjectSuccessBlock)success failure:(RKIFailureBlock)failure {
     [[RKObjectManager sharedManager] putObject:self path:nil parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         success([mappingResult firstObject]);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -246,8 +250,7 @@
     }];
 }
 
-- (void)patchObjectOnSuccess:(RKIObjectSuccessBlock)success
-                     failure:(RKIFailureBlock)failure {
+- (void)patchObjectOnSuccess:(RKIObjectSuccessBlock)success failure:(RKIFailureBlock)failure {
     [[RKObjectManager sharedManager] patchObject:self path:nil parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult){
         success([mappingResult firstObject]);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
