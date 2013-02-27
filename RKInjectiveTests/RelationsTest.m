@@ -64,6 +64,7 @@
             error = nil;
             mobjects = [moc executeFetchRequest:fetchRequest error:&error];
             expect(mobjects.count).to.equal(2);
+            [self blockTestCompleted];
         } failure:^(NSError *error){
             expect(error).to.beNil();
             [self blockTestCompleted];
