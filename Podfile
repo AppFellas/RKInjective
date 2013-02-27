@@ -9,15 +9,14 @@ pod 'Inflections'
 #pod 'MAObjCRuntime'
 
 #Network
-pod 'RestKit', podspec: 'https://github.com/RestKit/RestKit/raw/development/RestKit.podspec'
-pod 'RestKit/Testing', podspec: 'https://github.com/RestKit/RestKit/raw/development/RestKit.podspec'
+pod 'RestKit', '~> 0.20.0rc1'
+pod 'RestKit/Testing', '~> 0.20.0rc1'
 
 # Helpers
 pod 'Expecta'
-pod 'Nocilla', podspec: 'https://github.com/luisobo/Nocilla/raw/master/Nocilla.podspec'
+pod 'Nocilla'
 
-pod 'RestKit/Testing'
-pod 'TKSenTestAsync', :podspec => 'https://raw.github.com/xslim/TKSenTestAsync/master/TKSenTestAsync.podspec'
+pod 'TKSenTestAsync'
 
 # Social
 

@@ -5,7 +5,7 @@ PODS:
 - Inflections (1.0.0):
   - RegexKitLite
 - Injective (0.2.2)
-- Nocilla (0.2)
+- Nocilla (0.3)
 - RegexKitLite (4.0)
 - RestKit (0.20.0rc1):
   - RestKit/Core (= 0.20.0rc1)
@@ -23,33 +23,23 @@ PODS:
 - RestKit/Support (0.20.0rc1)
 - RestKit/Testing (0.20.0rc1)
 - SOCKit (1.1)
-- TKSenTestAsync (0.0.1)
+- TKSenTestAsync (0.0.2)
 
 DEPENDENCIES:
 - Expecta
 - Inflections
 - Injective
-- Nocilla (from `https://github.com/luisobo/Nocilla/raw/master/Nocilla.podspec')
-- RestKit (from `https://github.com/RestKit/RestKit/raw/development/RestKit.podspec')
-- RestKit/Testing (from `https://github.com/RestKit/RestKit/raw/development/RestKit.podspec')
-- TKSenTestAsync (from `https://raw.github.com/xslim/TKSenTestAsync/master/TKSenTestAsync.podspec')
-
-EXTERNAL SOURCES:
-  Nocilla:
-    :podspec: https://github.com/luisobo/Nocilla/raw/master/Nocilla.podspec
-  RestKit:
-    :podspec: https://github.com/RestKit/RestKit/raw/development/RestKit.podspec
-  RestKit/Testing:
-    :podspec: https://github.com/RestKit/RestKit/raw/development/RestKit.podspec
-  TKSenTestAsync:
-    :podspec: https://raw.github.com/xslim/TKSenTestAsync/master/TKSenTestAsync.podspec
+- Nocilla
+- RestKit (~> 0.20.0rc1)
+- RestKit/Testing (~> 0.20.0rc1)
+- TKSenTestAsync
 
 SPEC CHECKSUMS:
   AFNetworking: 761a418233d280c1e0580bcb76ff9cb4c3073d17
   Expecta: d46fb1bd78c90a83da0158b9b1e108de106e369f
   Inflections: e77c455409381402163911a75835892fd406ff99
   Injective: a8f4359fdd252b9b3323f2f7341534ba49e1b631
-  Nocilla: f2bb30a66e09fb03426a084f095c5791d46e2e26
+  Nocilla: 03b036f74f6d2893d311e8993ddbb42234602bc7
   RegexKitLite: 293ff6f3cf8f34277989a37802162c6961a2b35a
   RestKit: 0382132969d823a872b377c1ab2e383f3c74a339
   RestKit/Core: 0382132969d823a872b377c1ab2e383f3c74a339
@@ -59,6 +49,6 @@ SPEC CHECKSUMS:
   RestKit/Support: 0382132969d823a872b377c1ab2e383f3c74a339
   RestKit/Testing: 0382132969d823a872b377c1ab2e383f3c74a339
   SOCKit: ed67aeeca4a697b63a933229e53f4670d5b9300f
-  TKSenTestAsync: e927b4dc4a5f705e90e51ac49edbf4f09ce48f29
+  TKSenTestAsync: 7cb51dcd0a6725aa3a02a2172a5046263e04fe44
 
 COCOAPODS: 0.16.2
