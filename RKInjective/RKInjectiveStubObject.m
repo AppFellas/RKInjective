@@ -133,7 +133,7 @@
         Class dstClass = NSClassFromString(destination);
         if (![dstClass conformsToProtocol:@protocol(RKInjectiveProtocol)]) continue;
         RKObjectMapping *relMapping = [dstClass objectMapping];
-        RKRelationshipMapping *relationMapping = [RKRelationshipMapping relationshipMappingFromKeyPath:key
+        RKRelationshipMapping *relationMapping = [RKRelationshipMapping relationshipMappingFromKeyPath:[key underscore]
                                                                                              toKeyPath:key
                                                                                            withMapping:relMapping];
         [mappings addObject:relationMapping];
